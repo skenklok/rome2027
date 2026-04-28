@@ -55,22 +55,25 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .btn:active{transform:scale(.97)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#000}
 .btn.success{background:var(--green-soft);border-color:var(--green);color:var(--green)}
-.btn-row{display:flex;gap:8px;margin-top:14px}
+.btn.small{padding:6px 10px;font-size:12px}
+.btn-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.day-banner{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.day-banner strong{color:var(--accent)}
 .daygrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:12px}
 .daycell{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;font-size:11px;color:var(--muted);transition:all .15s;position:relative}
 .daycell .num{font-size:16px;font-weight:700;color:var(--text);margin-top:2px}
-.daycell.today{border-color:var(--accent);background:var(--accent-soft)}
+.daycell.today{border-color:var(--accent)}
 .daycell.today .num{color:var(--accent)}
+.daycell.selected{background:var(--accent-soft);border-color:var(--accent)}
 .daycell.has-workout::after{content:"";display:block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin:4px auto 0}
 .daycell.done::after{background:var(--green)}
 .daycell.skipped::after{background:var(--red)}
-.daycell.rest{opacity:.55}
+.daycell.rest{opacity:.6}
 .macro-bars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px}
 .macro{background:var(--surface-2);border-radius:10px;padding:12px 10px;text-align:center}
 .macro .name{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
 .macro .val{font-size:22px;font-weight:800;margin-top:4px}
 .macro .unit{font-size:11px;color:var(--muted);font-weight:600}
-/* Workout deck */
 .deck-meta{font-size:13px;color:var(--muted);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
 .deck-meta .progress{font-weight:700;color:var(--text)}
 .deck{position:relative;height:430px;margin:0 -4px}
@@ -89,16 +92,24 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:all .2s}
 .dot.active{background:var(--accent);width:22px;border-radius:4px}
-/* Meals */
-.meals{margin-top:14px;display:flex;flex-direction:column;gap:8px}
-.meal{display:flex;gap:12px;padding:12px;background:var(--surface-2);border-radius:12px;align-items:flex-start}
-.meal .meal-kcal{flex:0 0 56px;text-align:center;background:var(--bg);border-radius:8px;padding:8px 4px}
-.meal .meal-kcal .num{font-size:16px;font-weight:800}
-.meal .meal-kcal .lbl{font-size:9px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.meal .meal-body{flex:1}
-.meal .meal-name{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;display:flex;justify-content:space-between;align-items:center}
-.meal .meal-tag{font-size:9px;background:var(--surface);color:var(--muted);padding:2px 6px;border-radius:6px;font-weight:600;letter-spacing:.5px}
-.meal .meal-desc{font-size:13px;color:#d4d4d4;line-height:1.45}
+/* Meal slot with options */
+.meals{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.meal-slot{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;transition:transform .12s}
+.meal-slot:active{transform:scale(.99)}
+.meal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.meal-slot-name{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.2px}
+.meal-options-counter{font-size:10px;color:var(--muted);font-weight:600;background:var(--surface-2);padding:3px 8px;border-radius:10px;display:inline-flex;align-items:center;gap:6px}
+.meal-options-counter svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2}
+.meal-row{display:flex;gap:12px;align-items:flex-start}
+.meal-kcal{flex:0 0 56px;text-align:center;background:var(--surface-2);border-radius:8px;padding:8px 4px}
+.meal-kcal .num{font-size:16px;font-weight:800}
+.meal-kcal .lbl{font-size:9px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.meal-body{flex:1}
+.meal-name{font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px}
+.meal-tag{font-size:9px;background:var(--surface-2);color:var(--muted);padding:2px 6px;border-radius:6px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.meal-tag.recommended{background:var(--accent-soft);color:var(--accent)}
+.meal-desc{font-size:13px;color:#d4d4d4;line-height:1.45}
+.meal-cycle-hint{margin-top:8px;font-size:10px;color:var(--dim);text-align:right;font-weight:600;letter-spacing:.5px}
 /* Day card (Fuel tab) */
 .day-acc{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden;transition:all .2s}
 .day-acc.done{border-left:3px solid var(--green)}
@@ -118,7 +129,6 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .day-acc.open .day-body{display:block}
 .macro-line{display:flex;gap:14px;font-size:12px;color:var(--muted);padding:12px 0 4px}
 .macro-line strong{color:var(--text)}
-/* Tab bar */
 .tabbar{position:fixed;bottom:0;left:0;right:0;background:rgba(15,15,15,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--border);display:flex;padding:8px 0 calc(8px + var(--safe-bot));z-index:100}
 .tab{flex:1;background:none;border:none;color:var(--muted);font-size:10px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font-family:inherit;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:color .15s}
 .tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8}
@@ -148,9 +158,13 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 <main>
 
 <section id="view-today" class="view active">
+<div class="day-banner" id="day-banner" style="display:none">
+<div>Viewing <strong id="banner-day">—</strong></div>
+<button class="btn small" id="btn-today">Back to today</button>
+</div>
 <h1 id="today-day">Today</h1>
 <div class="subtitle" id="today-date">—</div>
-<div class="banner" id="today-banner" style="display:none"></div>
+<div class="banner" id="strength-banner" style="display:none"></div>
 
 <h2>Coach session</h2>
 <div class="card accent" id="coach-card">
@@ -179,7 +193,7 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 </div>
 </div>
 
-<h2>Today's meals</h2>
+<h2>Meals · tap a card to swap option</h2>
 <div class="meals" id="today-meals"></div>
 
 <div class="callout" id="today-note">—</div>
@@ -202,16 +216,16 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 
 <section id="view-fuel" class="view">
 <h1>Fuel plan</h1>
-<div class="subtitle">Daily targets + meals · tap a day to expand</div>
+<div class="subtitle">Daily targets + meal options · tap a day to expand, tap a meal to swap option</div>
 <div id="fuel-week"></div>
 <h2>Standing rules</h2>
 <div class="callout"><strong>Pre-run easy ≤ 1hr:</strong> coffee + banana, fasted.<br><strong>Pre-run longer / harder:</strong> coffee + SIS gel.<br><strong>Post-run quick:</strong> Arla Protein pouch + banana, then standard meal within 60 min.</div>
-<div class="callout warn"><strong>Watchlist:</strong> if a Sunday long run goes past 90 min, add a small pre-run carb (toast + honey, rice cake) given fracture history.</div>
+<div class="callout warn"><strong>Watchlist:</strong> if a Sunday long run goes past 90 min, add a small pre-run carb (banana + honey) given fracture history.</div>
 </section>
 
 <section id="view-status" class="view">
 <h1>Status</h1>
-<div class="subtitle">Week-of-week trend</div>
+<div class="subtitle">Tap a day to view its plan</div>
 
 <h2>This week</h2>
 <div class="daygrid" id="weekgrid"></div>
@@ -260,7 +274,40 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 </nav>
 
 <script>
-// ====== DATA (refreshed each Sunday) ======
+// ====== MEAL OPTION TEMPLATES (drawn from basket + pantry only) ======
+// Note: Marco's standing breakfast = Fage + fruit + honey. The "Fage base" option below is his default
+// with the additions (oats + nuts) the assessment recommended to hit calorie targets.
+// Carbs: pasta and rice are the preferred carbs over potatoes.
+
+const BREAKFAST_MED = [
+  {name:"Fage base — your usual + additions",tag:"recommended",kcal:600,desc:"Fage 0% Greek yogurt 200g + 60g oats + 25g almonds + 150g berries (blueberries/raspberries/strawberries) + 1 tbsp honey"},
+  {name:"Oats porridge",kcal:600,desc:"80g oats cooked in 250ml Alpro almond milk + banana + 30g almonds + 1 tbsp honey + Fage 100g on top"},
+  {name:"Eggs Italian-style",kcal:580,desc:"3-egg omelette with 30g feta + spinach + ½ avocado, side: 1 banana + 100g Fage with honey"}
+];
+const BREAKFAST_HIGH = [
+  {name:"Fage base — long-run version",tag:"recommended",kcal:720,desc:"Fage 0% 200g + 80g oats + 30g almonds + 150g berries + banana + 2 tbsp honey"},
+  {name:"Big oats porridge",kcal:720,desc:"100g oats in almond milk + banana + 30g almonds + 1 tbsp honey + Fage 100g + 100g berries"},
+  {name:"Eggs + extra",kcal:700,desc:"3-egg omelette + 30g feta + ½ avocado + 100g Fage with berries + banana + honey"}
+];
+const BREAKFAST_LOW = [
+  {name:"Fage base — small",tag:"recommended",kcal:450,desc:"Fage 0% 200g + 40g oats + 15g almonds + 150g berries + 1 tsp honey"},
+  {name:"Small oats porridge",kcal:450,desc:"50g oats in almond milk + banana + 20g almonds"},
+  {name:"2-egg breakfast",kcal:430,desc:"2-egg omelette + 30g feta + spinach + ½ avocado + side 100g Fage with honey"}
+];
+const SNACK_MED = [
+  {name:"Arla Protein + fruit",tag:"recommended",kcal:200,desc:"Arla Protein pouch + 150g blueberries (or raspberries)"},
+  {name:"Fage + nuts",kcal:220,desc:"Fage 0% 100g + 1 tbsp honey + 20g almonds"},
+  {name:"Banana + nuts",kcal:200,desc:"1 banana + 20g almonds"}
+];
+const SNACK_LOW = [
+  {name:"Arla Protein + fruit",tag:"recommended",kcal:170,desc:"Arla Protein pouch + handful raspberries"},
+  {name:"Fage + honey",kcal:160,desc:"Fage 0% 100g + 1 tsp honey"}
+];
+const SNACK_HIGH = [
+  {name:"Fage + oats + honey",tag:"recommended",kcal:280,desc:"Fage 0% 200g + 50g oats + 1 tbsp honey + raspberries"},
+  {name:"Arla Protein + banana + nuts",kcal:280,desc:"Arla Protein pouch + banana + 20g almonds"}
+];
+// ====== DATA ======
 const PLAN = {
   weekId:"2026-W18",
   weekRange:"27 Apr → 3 May 2026",
@@ -271,61 +318,125 @@ const PLAN = {
   days:[
     {dow:"Mon",date:"27 Apr",pill:"run",modality:"Run",name:"100/Z2/100",detail:"54:25 · 10.3 km · 63 TSS",defaultStatus:"done",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Recovery focus today. Eat well, hydrate.",
       meals:[
-        {label:"Breakfast",tag:"post-run",kcal:600,desc:"80g oats cooked in 250ml almond milk + banana + 30g mixed nuts + 1 tbsp honey"},
-        {label:"Snack",kcal:200,desc:"Arla Protein pouch + 150g blueberries"},
-        {label:"Lunch",tag:"pack-friendly",kcal:750,desc:"150g grilled chicken + 200g cooked rice + broccoli + carrots + 1 tbsp olive oil + lemon"},
-        {label:"Snack",kcal:250,desc:"Fage 0% 200g + 30g oats + raspberries"},
-        {label:"Dinner",kcal:900,desc:"Bolognese: 150g beef mince + Mutti tomato + onion, on 100g dry rigatoni + 30g parmigiano + romaine salad with olive oil"}
+        {slot:"Breakfast (post-run)",options:BREAKFAST_MED},
+        {slot:"Snack",options:SNACK_MED},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Chicken pasta",tag:"recommended",kcal:760,desc:"100g dry rigatoni + 150g grilled chicken + Mutti tomato + 20g parmigiano + romaine + olive oil"},
+          {name:"Chicken rice bowl",kcal:750,desc:"150g grilled chicken + 200g cooked rice + steamed broccoli + olive oil + lemon"},
+          {name:"Tuna pasta salad",kcal:740,desc:"100g dry rigatoni (cold) + 1 can tuna + capers + romaine + olive oil + lemon + parmigiano shavings"}
+        ]},
+        {slot:"Snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Pasta Bolognese",tag:"recommended",kcal:900,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + onion + 30g parmigiano + romaine salad with olive oil"},
+          {name:"Salmon + rice",kcal:900,desc:"200g salmon + 250g cooked rice + broccoli + olive oil + lemon + romaine salad"},
+          {name:"Chicken pasta + feta",kcal:900,desc:"100g dry rigatoni + 200g chicken breast + 60g feta + asparagus + lemon + olive oil"}
+        ]}
       ]},
     {dow:"Tue",date:"28 Apr",pill:"bike",modality:"Bike",name:"z2 + 30/30",detail:"1:01:19 · 11.1 km · 38 TSS",defaultStatus:"done",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Bike day — lower-impact than running. Today done.",
       meals:[
-        {label:"Breakfast",kcal:550,desc:"3-egg omelette with 30g feta + spinach, 2 slices wholegrain toast, ½ avocado"},
-        {label:"Snack",kcal:150,desc:"Banana + 20g almonds"},
-        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"Tuna bowl: 1 can tuna in spring water + 200g boiled potatoes + 2 boiled eggs + romaine + capers + olive oil + lemon"},
-        {label:"Snack",kcal:250,desc:"Arla Protein pouch + apple"},
-        {label:"Dinner",kcal:950,desc:"Pan-seared sea bass (200g) + 250g roasted potatoes + asparagus + olive oil + lemon"}
+        {slot:"Breakfast",options:BREAKFAST_MED},
+        {slot:"Snack",options:SNACK_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Tuna rice bowl",tag:"recommended",kcal:700,desc:"1 can tuna + 200g cooked rice + romaine + capers + olive oil + lemon + 1 boiled egg"},
+          {name:"Pasta with hake",kcal:700,desc:"80g dry rigatoni + 150g hake fillet (flaked) + Mutti tomato + capers + romaine on the side"},
+          {name:"Chicken rice bowl",kcal:700,desc:"150g chicken breast + 200g cooked rice + roasted broccoli + olive oil + lemon"}
+        ]},
+        {slot:"Snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Sea bass + rice",tag:"recommended",kcal:920,desc:"200g pan-seared sea bass + 250g cooked rice + asparagus + olive oil + lemon + romaine salad"},
+          {name:"Tortelloni",kcal:920,desc:"300g spinach & ricotta tortelloni + Mutti tomato + 30g parmigiano + side: 100g grilled chicken + romaine"},
+          {name:"Hake pasta",kcal:920,desc:"100g dry rigatoni + 200g hake (flaked) + lemon + capers + olive oil + asparagus on side"}
+        ]}
       ]},
     {dow:"Wed",date:"29 Apr",pill:"run",modality:"Run",name:"fartlek 100/100",detail:"~42 min · 53 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium-high",p:140,c:320,f:75,note:"Quality run. Coffee + SIS pre-run if early.",
       meals:[
-        {label:"Pre-run",kcal:0,desc:"Coffee + banana + SIS gel (intensity day)"},
-        {label:"Breakfast",tag:"post-run",kcal:550,desc:"80g oats + almond milk + banana + 20g nuts"},
-        {label:"Snack",kcal:200,desc:"Arla Protein pouch + raspberries"},
-        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"150g chicken breast + 200g cooked rice + roasted broccoli + lemon-olive oil dressing"},
-        {label:"Snack",kcal:200,desc:"Fage 0% 200g + 1 tbsp honey"},
-        {label:"Dinner",kcal:950,desc:"Spinach & ricotta tortelloni 300g + parmigiano + Mutti tomato sauce + side: 100g grilled chicken + romaine salad"}
+        {slot:"Pre-run",options:[
+          {name:"Coffee + banana + SIS",tag:"recommended",kcal:120,desc:"Standing routine: coffee + banana + 1 SIS gel during the harder reps"}
+        ]},
+        {slot:"Breakfast (post-run)",options:BREAKFAST_MED},
+        {slot:"Snack",options:SNACK_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Chicken rice bowl",tag:"recommended",kcal:700,desc:"150g chicken breast + 200g cooked rice + roasted broccoli + lemon-olive oil dressing"},
+          {name:"Tuna pasta",kcal:700,desc:"100g dry rigatoni (cold) + 1 can tuna + capers + romaine + Mutti cherry tomatoes + olive oil"},
+          {name:"Mince + rice",kcal:700,desc:"150g beef mince stir-fried with onion + Mutti tomato + 200g cooked rice + side broccoli"}
+        ]},
+        {slot:"Snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Tortelloni + chicken",tag:"recommended",kcal:920,desc:"300g spinach & ricotta tortelloni + 30g parmigiano + Mutti tomato sauce, side: 100g grilled chicken + romaine"},
+          {name:"Salmon + rice",kcal:920,desc:"200g salmon + 250g cooked rice + asparagus + olive oil + lemon"},
+          {name:"Pasta Bolognese",kcal:920,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + 30g parmigiano + romaine"}
+        ]}
       ]},
-    {dow:"Thu",date:"30 Apr",pill:"strength",modality:"Strength",name:"Strength session",detail:"Built from physio program · ~45-50 min",defaultStatus:"planned",kcal:2300,carb:"Lower",p:140,c:240,f:80,note:"Today's session is detailed in the Workout tab. Lowest-cal day of the week — don't overshoot.",
+    {dow:"Thu",date:"30 Apr",pill:"strength",modality:"Strength",name:"Strength session",detail:"Built from physio program · ~45-50 min",defaultStatus:"planned",kcal:2300,carb:"Lower",p:140,c:240,f:80,note:"Today's session is in the Workout tab. Lowest-cal day — don't overshoot.",
       meals:[
-        {label:"Breakfast",kcal:450,desc:"Fage 0% 200g + 50g oats + berries + 1 tbsp honey + 20g nuts"},
-        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"Lentil + feta salad: 200g cooked Biona lentils + 80g feta + romaine + cherry tomato + olive oil + lemon, 1 boiled egg"},
-        {label:"Snack",tag:"post-strength",kcal:250,desc:"Arla Protein pouch + 1 piece fruit"},
-        {label:"Dinner",kcal:900,desc:"Grilled chicken 200g + roasted broccoli + 200g potatoes + olive oil + lemon"}
+        {slot:"Breakfast",options:BREAKFAST_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Lentil + feta salad",tag:"recommended",kcal:680,desc:"200g cooked Biona lentils + 80g feta + romaine + Mutti cherry tomatoes + olive oil + lemon + 1 boiled egg"},
+          {name:"Chicken rice bowl (small)",kcal:680,desc:"150g chicken breast + 150g cooked rice + steamed broccoli + olive oil + lemon"},
+          {name:"Tuna pasta salad",kcal:680,desc:"80g dry rigatoni + 1 can tuna + capers + romaine + olive oil + lemon"}
+        ]},
+        {slot:"Post-strength snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Chicken + rice",tag:"recommended",kcal:880,desc:"200g grilled chicken + 200g cooked rice + roasted broccoli + olive oil + lemon"},
+          {name:"Hake + rice",kcal:880,desc:"200g pan-grilled hake + 200g cooked rice + asparagus + olive oil + lemon + romaine"},
+          {name:"Pasta with chicken & feta",kcal:880,desc:"80g dry rigatoni + 150g chicken + 60g feta + asparagus + lemon + olive oil"}
+        ]}
       ]},
     {dow:"Fri",date:"01 May",pill:"run",modality:"Run",name:"10' tempo",detail:"~38 min · 49 TSS",defaultStatus:"planned",kcal:2500,carb:"Medium-high",p:140,c:300,f:75,note:"Tempo. Strength was yesterday — monitor leg freshness.",
       meals:[
-        {label:"Pre-run",kcal:0,desc:"Coffee + banana (+ SIS gel if effort feels hard)"},
-        {label:"Breakfast",tag:"post-run",kcal:550,desc:"60g oats + almond milk + banana + Greek yogurt 100g + 1 tbsp honey"},
-        {label:"Snack",kcal:200,desc:"Arla Protein pouch + apple"},
-        {label:"Lunch",tag:"pack-friendly",kcal:650,desc:"Hake fillet 150g pan-grilled + 200g cooked rice + romaine + capers + olive oil + lemon"},
-        {label:"Snack",kcal:200,desc:"Fage 0% 150g + raspberries"},
-        {label:"Dinner",kcal:900,desc:"Bolognese on 100g rigatoni + parmigiano + romaine salad"}
+        {slot:"Pre-run",options:[
+          {name:"Coffee + banana",tag:"recommended",kcal:90,desc:"Coffee + banana. Add SIS gel if effort feels hard."}
+        ]},
+        {slot:"Breakfast (post-run)",options:BREAKFAST_MED},
+        {slot:"Snack",options:SNACK_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Hake rice bowl",tag:"recommended",kcal:680,desc:"150g pan-grilled hake + 200g cooked rice + romaine + capers + olive oil + lemon"},
+          {name:"Chicken pasta",kcal:680,desc:"80g dry rigatoni + 150g chicken + Mutti tomato + 20g parmigiano + romaine"},
+          {name:"Tuna rice bowl",kcal:680,desc:"1 can tuna + 200g cooked rice + romaine + capers + olive oil + lemon + 1 boiled egg"}
+        ]},
+        {slot:"Snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Pasta Bolognese",tag:"recommended",kcal:880,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + onion + 30g parmigiano + romaine salad"},
+          {name:"Salmon + rice",kcal:880,desc:"180g salmon + 250g cooked rice + broccoli + olive oil + lemon"},
+          {name:"Tortelloni",kcal:880,desc:"300g spinach & ricotta tortelloni + parmigiano + Mutti tomato + side romaine"}
+        ]}
       ]},
     {dow:"Sat",date:"02 May",pill:"bike",modality:"Bike",name:"blocchi LT1",detail:"1:05 · 46 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Quality bike. Sets up Sunday long run.",
       meals:[
-        {label:"Breakfast",kcal:550,desc:"3 eggs scrambled + 1 slice toast + ½ avocado + spinach"},
-        {label:"Snack",kcal:200,desc:"Banana + 25g almonds"},
-        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"150g grilled chicken + 200g potatoes + roasted asparagus + olive oil + lemon"},
-        {label:"Snack",kcal:200,desc:"Arla Protein pouch + blueberries"},
-        {label:"Dinner",kcal:950,desc:"Salmon 200g + 250g cooked rice + broccoli + olive oil + lemon"}
+        {slot:"Breakfast",options:BREAKFAST_MED},
+        {slot:"Snack",options:SNACK_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Chicken rice bowl",tag:"recommended",kcal:700,desc:"150g grilled chicken + 200g cooked rice + roasted asparagus + olive oil + lemon"},
+          {name:"Mince pasta",kcal:700,desc:"80g dry rigatoni + 150g beef mince + Mutti tomato + onion + parmigiano + romaine"},
+          {name:"Sea bass rice bowl",kcal:700,desc:"200g sea bass + 200g cooked rice + romaine + capers + olive oil + lemon"}
+        ]},
+        {slot:"Snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Salmon + rice",tag:"recommended",kcal:920,desc:"200g salmon + 250g cooked rice + broccoli + olive oil + lemon + romaine"},
+          {name:"Cod pasta",kcal:920,desc:"100g dry rigatoni + 200g cod (flaked) + Mutti cherry tomatoes + capers + olive oil + asparagus"},
+          {name:"Chicken pasta",kcal:920,desc:"100g dry rigatoni + 200g chicken + 60g feta + asparagus + lemon + olive oil"}
+        ]}
       ]},
     {dow:"Sun",date:"03 May",pill:"run",modality:"Run",name:"lungo variato",detail:"1:16 · 108 TSS",defaultStatus:"planned",kcal:2950,carb:"High",p:145,c:430,f:80,note:"Biggest day. Carb-up. Eat properly post-run within 60 min.",
       meals:[
-        {label:"Pre-run",kcal:0,desc:"Coffee + banana, SIS gel during"},
-        {label:"Post-run",tag:"within 30 min",kcal:200,desc:"Arla Protein pouch + banana"},
-        {label:"Breakfast",kcal:700,desc:"80g oats + almond milk + banana + 30g nuts + honey + Greek yogurt 100g + berries"},
-        {label:"Lunch",kcal:1000,desc:"120g dry rigatoni + Mutti tomato sauce + 30g parmigiano + romaine salad with olive oil"},
-        {label:"Snack",kcal:250,desc:"Fage 0% 200g + 50g oats + honey"},
-        {label:"Dinner",kcal:800,desc:"Salmon 200g + 300g roasted potatoes + asparagus + olive oil + lemon"}
+        {slot:"Pre-run",options:[
+          {name:"Coffee + banana + SIS",tag:"recommended",kcal:140,desc:"Coffee + banana before, SIS gel during run"}
+        ]},
+        {slot:"Post-run (within 30 min)",options:[
+          {name:"Arla + banana",tag:"recommended",kcal:200,desc:"Arla Protein pouch + banana"}
+        ]},
+        {slot:"Breakfast",options:BREAKFAST_HIGH},
+        {slot:"Lunch (carb up)",options:[
+          {name:"Pasta Pomodoro",tag:"recommended",kcal:980,desc:"120g dry rigatoni + Mutti tomato sauce with onion + 30g parmigiano + olive oil + romaine salad with balsamic"},
+          {name:"Tortelloni + parmigiano",kcal:980,desc:"450g spinach & ricotta tortelloni + 40g parmigiano + Mutti tomato + romaine"},
+          {name:"Big rice + chicken",kcal:980,desc:"300g cooked rice + 200g chicken breast + roasted broccoli + olive oil + 30g parmigiano on top"}
+        ]},
+        {slot:"Snack",options:SNACK_HIGH},
+        {slot:"Dinner",options:[
+          {name:"Salmon + rice",tag:"recommended",kcal:780,desc:"200g salmon + 250g cooked rice + asparagus + olive oil + lemon"},
+          {name:"Chicken pasta",kcal:780,desc:"80g dry rigatoni + 200g chicken + Mutti tomato + parmigiano + romaine"},
+          {name:"Sea bass + rice",kcal:780,desc:"220g sea bass + 250g cooked rice + asparagus + olive oil + lemon"}
+        ]}
       ]}
   ],
   strength:{
@@ -346,24 +457,26 @@ const PLAN = {
   }
 };
 
-// ====== STATE (localStorage) ======
+// ====== STATE ======
 const STORAGE_KEY = "rome2027-progress-" + PLAN.weekId;
-function loadState(){
-  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-  catch(e){ return {}; }
-}
+let selectedDay = null;  // null = follow today
+function loadState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; } }
 function saveState(s){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }catch(e){} }
-function getStatus(idx){
-  const s = loadState();
-  if(s[idx]) return s[idx];
-  return PLAN.days[idx].defaultStatus || "planned";
-}
+function getStatus(idx){ const s = loadState(); return (s.status && s.status[idx]) || PLAN.days[idx].defaultStatus || "planned"; }
 function setStatus(idx, status){
   const s = loadState();
-  if(status === PLAN.days[idx].defaultStatus){ delete s[idx]; }
-  else { s[idx] = status; }
-  saveState(s);
-  rerender();
+  s.status = s.status || {};
+  if(status === PLAN.days[idx].defaultStatus){ delete s.status[idx]; } else { s.status[idx] = status; }
+  saveState(s); rerender();
+}
+function getMealChoice(dayIdx, mealIdx){ const s = loadState(); return (s.choices && s.choices[dayIdx] && s.choices[dayIdx][mealIdx]) || 0; }
+function cycleMeal(dayIdx, mealIdx){
+  const s = loadState();
+  s.choices = s.choices || {};
+  s.choices[dayIdx] = s.choices[dayIdx] || {};
+  const total = PLAN.days[dayIdx].meals[mealIdx].options.length;
+  s.choices[dayIdx][mealIdx] = ((s.choices[dayIdx][mealIdx] || 0) + 1) % total;
+  saveState(s); rerender();
 }
 
 // ====== HELPERS ======
@@ -375,34 +488,37 @@ function todayIndex(){
   let idx = PLAN.days.findIndex(d=>d.dow===t);
   return idx<0 ? 0 : idx;
 }
+function getActiveDayIdx(){ return selectedDay !== null ? selectedDay : todayIndex(); }
 
 // ====== RENDER ======
 function init(){
   renderCountdown();
   rerender();
   bindTabs();
+  $("#btn-today").onclick = ()=>{ selectedDay = null; switchTo("today"); rerender(); };
   $("#last-update").textContent = "Plan: " + PLAN.weekId + " · pushed " + PLAN.generated;
 }
-
-function rerender(){
-  renderToday();
-  renderWorkout();
-  renderFuel();
-  renderStatus();
-}
+function rerender(){ renderToday(); renderWorkout(); renderFuel(); renderStatus(); }
 
 function renderCountdown(){
   const race = new Date(PLAN.raceDate);
   const days = Math.floor((race - new Date()) / (1000*60*60*24));
-  const weeks = Math.floor(days/7);
-  $("#countdown").textContent = weeks + " weeks · " + days + " days to race";
+  $("#countdown").textContent = Math.floor(days/7) + " weeks · " + days + " days to race";
 }
 
 function renderToday(){
-  const i = todayIndex();
-  const d = PLAN.days[i];
-  const status = getStatus(i);
-  $("#today-day").textContent = d.dow;
+  const idx = getActiveDayIdx();
+  const d = PLAN.days[idx];
+  const status = getStatus(idx);
+
+  if(selectedDay !== null && selectedDay !== todayIndex()){
+    $("#day-banner").style.display = "flex";
+    $("#banner-day").textContent = d.dow + " " + d.date;
+  } else {
+    $("#day-banner").style.display = "none";
+  }
+
+  $("#today-day").textContent = (idx === todayIndex()) ? d.dow : d.dow;
   $("#today-date").textContent = d.date + " · " + d.modality.toLowerCase() + " day";
   const p = $("#coach-pill"); p.className = "pill " + d.pill; p.textContent = d.modality;
   const tag = $("#coach-tag");
@@ -412,27 +528,14 @@ function renderToday(){
   $("#coach-detail").textContent = d.detail;
   $("#coach-card").className = "card accent" + (status==="done"?" done":"");
 
-  // Action buttons
   const actions = $("#coach-actions"); actions.innerHTML = "";
   if(status === "done"){
-    const btn = document.createElement("button");
-    btn.className = "btn"; btn.textContent = "Undo done";
-    btn.onclick = ()=>setStatus(i,"planned");
-    actions.appendChild(btn);
+    actions.appendChild(makeBtn("Undo done","",()=>setStatus(idx,"planned")));
   } else if(status === "skipped"){
-    const btn = document.createElement("button");
-    btn.className = "btn"; btn.textContent = "Undo skip";
-    btn.onclick = ()=>setStatus(i,"planned");
-    actions.appendChild(btn);
+    actions.appendChild(makeBtn("Undo skip","",()=>setStatus(idx,"planned")));
   } else {
-    const done = document.createElement("button");
-    done.className = "btn primary"; done.innerHTML = "✓ Mark done";
-    done.onclick = ()=>setStatus(i,"done");
-    actions.appendChild(done);
-    const skip = document.createElement("button");
-    skip.className = "btn"; skip.textContent = "Skip";
-    skip.onclick = ()=>setStatus(i,"skipped");
-    actions.appendChild(skip);
+    actions.appendChild(makeBtn("✓ Mark done","primary",()=>setStatus(idx,"done")));
+    actions.appendChild(makeBtn("Skip","",()=>setStatus(idx,"skipped")));
   }
 
   $("#kcal-today").innerHTML = d.kcal + '<span class="unit">kcal</span>';
@@ -443,27 +546,42 @@ function renderToday(){
   $("#today-note").innerHTML = d.note;
 
   if(d.pill === "strength"){
-    const b = $("#today-banner");
-    b.style.display = "block";
-    b.innerHTML = '<strong>Strength day.</strong> Tap <strong>Workout</strong> below for the full session.';
-  } else {
-    $("#today-banner").style.display = "none";
-  }
+    $("#strength-banner").style.display = "block";
+    $("#strength-banner").innerHTML = '<strong>Strength day.</strong> Tap <strong>Workout</strong> below for the full session.';
+  } else { $("#strength-banner").style.display = "none"; }
 
-  // Today's meals
   const mc = $("#today-meals"); mc.innerHTML = "";
-  d.meals.forEach(m => mc.appendChild(mealCard(m)));
+  d.meals.forEach((m,mi) => mc.appendChild(mealSlotCard(idx, mi, m)));
 }
 
-function mealCard(m){
+function makeBtn(label, cls, onclick){
+  const b = document.createElement("button");
+  b.className = "btn " + (cls||"");
+  b.innerHTML = label;
+  b.onclick = onclick;
+  return b;
+}
+
+function mealSlotCard(dayIdx, mealIdx, slot){
+  const optIdx = getMealChoice(dayIdx, mealIdx);
+  const opt = slot.options[optIdx];
+  const total = slot.options.length;
   const el = document.createElement("div");
-  el.className = "meal";
+  el.className = "meal-slot";
+  const swapIcon = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h12M19 7l-3-3M19 7l-3 3M17 17H5M5 17l3 3M5 17l3-3"/></svg>';
   el.innerHTML = `
-    <div class="meal-kcal"><div class="num">${m.kcal||"—"}</div><div class="lbl">kcal</div></div>
-    <div class="meal-body">
-      <div class="meal-name">${m.label}${m.tag?'<span class="meal-tag">'+m.tag+'</span>':''}</div>
-      <div class="meal-desc">${m.desc}</div>
+    <div class="meal-head">
+      <span class="meal-slot-name">${slot.slot}</span>
+      ${total>1 ? `<span class="meal-options-counter">${swapIcon} ${optIdx+1} / ${total} · tap to swap</span>` : ''}
+    </div>
+    <div class="meal-row">
+      <div class="meal-kcal"><div class="num">${opt.kcal||"—"}</div><div class="lbl">kcal</div></div>
+      <div class="meal-body">
+        <div class="meal-name">${opt.name}${opt.tag?'<span class="meal-tag '+(opt.tag==='recommended'?'recommended':'')+'">'+opt.tag+'</span>':''}</div>
+        <div class="meal-desc">${opt.desc}</div>
+      </div>
     </div>`;
+  if(total > 1) el.onclick = ()=>cycleMeal(dayIdx, mealIdx);
   return el;
 }
 
@@ -498,29 +616,16 @@ function renderWorkout(){
     $("#ex-current").textContent = idx+1;
   }, {passive:true});
 
-  // Strength action buttons (find Thu day index)
   const thuIdx = PLAN.days.findIndex(d=>d.pill==="strength");
   const status = getStatus(thuIdx);
   const actions = $("#strength-actions"); actions.innerHTML = "";
   if(status === "done"){
-    const btn = document.createElement("button");
-    btn.className = "btn success"; btn.innerHTML = "✓ Done — undo";
-    btn.onclick = ()=>setStatus(thuIdx,"planned");
-    actions.appendChild(btn);
+    actions.appendChild(makeBtn("✓ Done — undo","success",()=>setStatus(thuIdx,"planned")));
   } else if(status === "skipped"){
-    const btn = document.createElement("button");
-    btn.className = "btn"; btn.textContent = "Skipped — undo";
-    btn.onclick = ()=>setStatus(thuIdx,"planned");
-    actions.appendChild(btn);
+    actions.appendChild(makeBtn("Skipped — undo","",()=>setStatus(thuIdx,"planned")));
   } else {
-    const done = document.createElement("button");
-    done.className = "btn primary"; done.innerHTML = "✓ Mark session done";
-    done.onclick = ()=>setStatus(thuIdx,"done");
-    actions.appendChild(done);
-    const skip = document.createElement("button");
-    skip.className = "btn"; skip.textContent = "Skip this week";
-    skip.onclick = ()=>setStatus(thuIdx,"skipped");
-    actions.appendChild(skip);
+    actions.appendChild(makeBtn("✓ Mark session done","primary",()=>setStatus(thuIdx,"done")));
+    actions.appendChild(makeBtn("Skip this week","",()=>setStatus(thuIdx,"skipped")));
   }
 }
 
@@ -529,7 +634,7 @@ function renderFuel(){
   PLAN.days.forEach((d,i) => {
     const status = getStatus(i);
     const acc = document.createElement("div");
-    acc.className = "day-acc" + (status==="done"?" done":status==="skipped"?" skipped":"") + (i===todayIndex()?" open":"");
+    acc.className = "day-acc" + (status==="done"?" done":status==="skipped"?" skipped":"") + (i===getActiveDayIdx()?" open":"");
     acc.innerHTML = `
       <div class="day-head">
         <div class="day-head-left">
@@ -551,31 +656,33 @@ function renderFuel(){
           <span><span class="muted">C</span> <strong>${d.c}g</strong></span>
           <span><span class="muted">F</span> <strong>${d.f}g</strong></span>
         </div>
-        <div class="meals"></div>
+        <div class="meals" id="fuel-meals-${i}"></div>
       </div>`;
     const head = acc.querySelector(".day-head");
     head.addEventListener("click", ()=>acc.classList.toggle("open"));
-    const meals = acc.querySelector(".meals");
-    d.meals.forEach(m => meals.appendChild(mealCard(m)));
     wrap.appendChild(acc);
+    const meals = acc.querySelector(".meals");
+    d.meals.forEach((m,mi) => meals.appendChild(mealSlotCard(i, mi, m)));
   });
 }
 
 function renderStatus(){
   const grid = $("#weekgrid"); grid.innerHTML = "";
   const ti = todayIndex();
+  const ai = getActiveDayIdx();
   PLAN.days.forEach((d,i) => {
     const status = getStatus(i);
     const cell = document.createElement("div");
     let cls = "daycell";
     if(d.pill === "rest") cls += " rest";
     if(i === ti) cls += " today";
+    if(i === ai) cls += " selected";
     if(d.pill !== "rest") cls += " has-workout";
     if(status === "done") cls += " done";
     if(status === "skipped") cls += " skipped";
     cell.className = cls;
     cell.innerHTML = `<div>${d.dow}</div><div class="num">${d.date.split(" ")[0]}</div>`;
-    cell.addEventListener("click", ()=>{ document.querySelector('[data-view="today"]').click(); });
+    cell.addEventListener("click", ()=>{ selectedDay = i; switchTo("today"); rerender(); });
     grid.appendChild(cell);
   });
   const m = PLAN.metrics;
@@ -592,12 +699,19 @@ function renderStatus(){
   $("#b-visc").textContent = b.visc;
 }
 
+function switchTo(view){
+  $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.view===view));
+  $$(".view").forEach(v => v.classList.toggle("active", v.id==="view-"+view));
+  window.scrollTo({top:0, behavior:"instant"});
+}
 function bindTabs(){
   $$(".tab").forEach(t => t.addEventListener("click", ()=>{
-    const view = t.dataset.view;
-    $$(".tab").forEach(b => b.classList.toggle("active", b===t));
-    $$(".view").forEach(v => v.classList.toggle("active", v.id==="view-"+view));
-    window.scrollTo({top:0, behavior:"instant"});
+    if(t.dataset.view === "today" && selectedDay !== null && selectedDay !== todayIndex()){
+      // Tapping the Today tab while viewing a different day brings you back to today
+      selectedDay = null;
+      rerender();
+    }
+    switchTo(t.dataset.view);
   }));
 }
 
