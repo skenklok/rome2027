@@ -17,7 +17,8 @@
   --bg:#0a0a0a;--surface:#161616;--surface-2:#1f1f1f;--border:#2a2a2a;
   --text:#fafafa;--muted:#888;--dim:#555;
   --accent:#ff7a00;--accent-soft:rgba(255,122,0,.15);
-  --green:#34d399;--blue:#60a5fa;--red:#f87171;--yellow:#fbbf24;
+  --green:#34d399;--green-soft:rgba(52,211,153,.15);
+  --blue:#60a5fa;--red:#f87171;--yellow:#fbbf24;
   --safe-top:env(safe-area-inset-top);--safe-bot:env(safe-area-inset-bottom);
 }
 html,body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior-y:contain}
@@ -35,6 +36,7 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .subtitle{color:var(--muted);font-size:14px;margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:12px}
 .card.accent{border-color:var(--accent);background:linear-gradient(135deg,var(--accent-soft),var(--surface))}
+.card.done{border-color:var(--green)}
 .row{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
 .row:not(:last-child){border-bottom:1px solid var(--border)}
 .row .label{color:var(--muted);font-size:14px}
@@ -47,21 +49,27 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .pill.rest{background:rgba(136,136,136,.15);color:var(--muted)}
 .pill.strength{background:rgba(255,122,0,.15);color:var(--accent)}
 .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;background:var(--surface-2);color:var(--muted);margin-right:6px;font-weight:500}
-.tag.done{background:rgba(52,211,153,.15);color:var(--green)}
+.tag.done{background:var(--green-soft);color:var(--green)}
+.tag.skipped{background:rgba(248,113,113,.15);color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-family:inherit;cursor:pointer;transition:all .15s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#000}
+.btn.success{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.btn-row{display:flex;gap:8px;margin-top:14px}
 .daygrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:12px}
-.daycell{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;font-size:11px;color:var(--muted);transition:all .15s}
+.daycell{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;font-size:11px;color:var(--muted);transition:all .15s;position:relative}
 .daycell .num{font-size:16px;font-weight:700;color:var(--text);margin-top:2px}
 .daycell.today{border-color:var(--accent);background:var(--accent-soft)}
 .daycell.today .num{color:var(--accent)}
 .daycell.has-workout::after{content:"";display:block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin:4px auto 0}
+.daycell.done::after{background:var(--green)}
+.daycell.skipped::after{background:var(--red)}
 .daycell.rest{opacity:.55}
 .macro-bars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px}
 .macro{background:var(--surface-2);border-radius:10px;padding:12px 10px;text-align:center}
 .macro .name{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
 .macro .val{font-size:22px;font-weight:800;margin-top:4px}
 .macro .unit{font-size:11px;color:var(--muted);font-weight:600}
-.gauge{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin-top:8px}
-.gauge .fill{height:100%;background:var(--accent);border-radius:3px;transition:width .4s}
 /* Workout deck */
 .deck-meta{font-size:13px;color:var(--muted);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
 .deck-meta .progress{font-weight:700;color:var(--text)}
@@ -76,12 +84,40 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .prescription-cell{flex:1;background:var(--surface-2);border-radius:12px;padding:12px;text-align:center}
 .prescription-cell .pn{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
 .prescription-cell .pv{font-size:24px;font-weight:800;margin-top:2px;color:var(--accent)}
-.prescription-cell .ps{font-size:11px;color:var(--muted)}
 .cue{font-size:14px;line-height:1.55;color:#d4d4d4;flex:1;overflow-y:auto;padding-right:4px}
 .cue::before{content:"CUE";display:block;font-size:10px;letter-spacing:2px;color:var(--muted);margin-bottom:6px;font-weight:700}
 .dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:all .2s}
 .dot.active{background:var(--accent);width:22px;border-radius:4px}
+/* Meals */
+.meals{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.meal{display:flex;gap:12px;padding:12px;background:var(--surface-2);border-radius:12px;align-items:flex-start}
+.meal .meal-kcal{flex:0 0 56px;text-align:center;background:var(--bg);border-radius:8px;padding:8px 4px}
+.meal .meal-kcal .num{font-size:16px;font-weight:800}
+.meal .meal-kcal .lbl{font-size:9px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.meal .meal-body{flex:1}
+.meal .meal-name{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;display:flex;justify-content:space-between;align-items:center}
+.meal .meal-tag{font-size:9px;background:var(--surface);color:var(--muted);padding:2px 6px;border-radius:6px;font-weight:600;letter-spacing:.5px}
+.meal .meal-desc{font-size:13px;color:#d4d4d4;line-height:1.45}
+/* Day card (Fuel tab) */
+.day-acc{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden;transition:all .2s}
+.day-acc.done{border-left:3px solid var(--green)}
+.day-acc.skipped{border-left:3px solid var(--red)}
+.day-head{padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.day-head-left{flex:1;min-width:0}
+.day-head-top{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.day-head-name{font-size:15px;font-weight:700}
+.day-head-meta{font-size:12px;color:var(--muted)}
+.day-head-right{text-align:right}
+.day-head-kcal{font-size:18px;font-weight:800}
+.day-head-kcal .unit{font-size:10px;color:var(--muted);font-weight:600;margin-left:2px}
+.day-head-carb{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-top:2px}
+.chev{margin-left:10px;color:var(--muted);transition:transform .2s;font-size:13px}
+.day-acc.open .chev{transform:rotate(90deg)}
+.day-body{display:none;padding:0 16px 16px;border-top:1px solid var(--border)}
+.day-acc.open .day-body{display:block}
+.macro-line{display:flex;gap:14px;font-size:12px;color:var(--muted);padding:12px 0 4px}
+.macro-line strong{color:var(--text)}
 /* Tab bar */
 .tabbar{position:fixed;bottom:0;left:0;right:0;background:rgba(15,15,15,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--border);display:flex;padding:8px 0 calc(8px + var(--safe-bot));z-index:100}
 .tab{flex:1;background:none;border:none;color:var(--muted);font-size:10px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font-family:inherit;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:color .15s}
@@ -111,11 +147,9 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 
 <main>
 
-<!-- TODAY VIEW -->
 <section id="view-today" class="view active">
 <h1 id="today-day">Today</h1>
 <div class="subtitle" id="today-date">—</div>
-
 <div class="banner" id="today-banner" style="display:none"></div>
 
 <h2>Coach session</h2>
@@ -126,9 +160,10 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 </div>
 <h3 id="coach-name">—</h3>
 <div id="coach-detail" style="font-size:13px;color:var(--muted);line-height:1.5;margin-top:6px"></div>
+<div class="btn-row" id="coach-actions"></div>
 </div>
 
-<h2>Today's fuel target</h2>
+<h2>Fuel target</h2>
 <div class="card">
 <div style="display:flex;align-items:baseline;justify-content:space-between">
 <div class="big-num" id="kcal-today">—<span class="unit">kcal</span></div>
@@ -144,10 +179,12 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 </div>
 </div>
 
+<h2>Today's meals</h2>
+<div class="meals" id="today-meals"></div>
+
 <div class="callout" id="today-note">—</div>
 </section>
 
-<!-- WORKOUT VIEW -->
 <section id="view-workout" class="view">
 <h1>Strength session</h1>
 <div class="subtitle" id="workout-when">—</div>
@@ -159,26 +196,30 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 <div class="scroller" id="ex-scroller"></div>
 </div>
 <div class="dots" id="dots"></div>
-<div class="callout warn" style="margin-top:18px"><strong>If pain → stop.</strong> If sleep was &lt; 5 hrs → halve volume. Recovery &gt; stimulus.</div>
+<div class="btn-row" id="strength-actions" style="margin-top:18px"></div>
+<div class="callout warn" style="margin-top:14px"><strong>If pain → stop.</strong> If sleep was &lt; 5 hrs → halve volume. Recovery &gt; stimulus.</div>
 </section>
 
-<!-- FUEL VIEW -->
 <section id="view-fuel" class="view">
 <h1>Fuel plan</h1>
-<div class="subtitle">Daily targets · week ahead</div>
+<div class="subtitle">Daily targets + meals · tap a day to expand</div>
 <div id="fuel-week"></div>
 <h2>Standing rules</h2>
-<div class="callout"><strong>Pre-run easy ≤ 1hr:</strong> coffee + banana, fasted.<br><strong>Pre-run longer / harder:</strong> coffee + SIS gel.<br><strong>Post-run quick:</strong> Arla Protein pouch + banana, then standard meal.</div>
-<div class="callout warn"><strong>Watchlist:</strong> if a Sunday long run goes past 90 min in coming weeks, add a small pre-run carb (toast + honey, rice cake) given fracture history.</div>
+<div class="callout"><strong>Pre-run easy ≤ 1hr:</strong> coffee + banana, fasted.<br><strong>Pre-run longer / harder:</strong> coffee + SIS gel.<br><strong>Post-run quick:</strong> Arla Protein pouch + banana, then standard meal within 60 min.</div>
+<div class="callout warn"><strong>Watchlist:</strong> if a Sunday long run goes past 90 min, add a small pre-run carb (toast + honey, rice cake) given fracture history.</div>
 </section>
 
-<!-- STATUS VIEW -->
 <section id="view-status" class="view">
 <h1>Status</h1>
 <div class="subtitle">Week-of-week trend</div>
 
 <h2>This week</h2>
 <div class="daygrid" id="weekgrid"></div>
+<div style="display:flex;gap:14px;font-size:11px;color:var(--muted);margin-bottom:14px">
+<span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:4px"></span>Planned</span>
+<span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:4px"></span>Done</span>
+<span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);margin-right:4px"></span>Skipped</span>
+</div>
 
 <h2>Performance metrics</h2>
 <div class="card">
@@ -219,7 +260,7 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 </nav>
 
 <script>
-// ----- DATA (updated each Sunday by Claude) -----
+// ====== DATA (refreshed each Sunday) ======
 const PLAN = {
   weekId:"2026-W18",
   weekRange:"27 Apr → 3 May 2026",
@@ -228,13 +269,64 @@ const PLAN = {
   metrics:{ctl:34,atl:33,tsb:2,ramp28:1,rhr:47,hrv:53},
   body:{weight:"79.55 kg",bf:"22.5%",ffm:"61.65 kg",visc:"6 (excellent)"},
   days:[
-    {dow:"Mon",date:"27 Apr",pill:"run",modality:"Run",name:"100/Z2/100",detail:"54:25 · 10.3 km · 63 TSS",done:true,kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Stack hard with hard if you ever shift strength here. Today done — recover well."},
-    {dow:"Tue",date:"28 Apr",pill:"bike",modality:"Bike",name:"z2 + 30/30",detail:"1:01:19 · 11.1 km · 38 TSS",done:true,kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Bike day — lower-impact than running. Today done."},
-    {dow:"Wed",date:"29 Apr",pill:"run",modality:"Run",name:"fartlek 100/100",detail:"~42 min · 53 TSS",done:false,kcal:2600,carb:"Medium-high",p:140,c:320,f:75,note:"Quality run. Coffee + SIS pre-run if early. Eat well after — chicken + potatoes + greens kind of dinner."},
-    {dow:"Thu",date:"30 Apr",pill:"strength",modality:"Strength",name:"Strength session",detail:"Built from physio program · ~45-50 min",done:false,kcal:2300,carb:"Lower",p:140,c:240,f:80,note:"Today's session is detailed in the Workout tab. Lowest-cal day of the week — don't overshoot. Greek yogurt + Arla pouch is plenty post-strength."},
-    {dow:"Fri",date:"01 May",pill:"run",modality:"Run",name:"10' tempo",detail:"~38 min · 49 TSS",done:false,kcal:2500,carb:"Medium-high",p:140,c:300,f:75,note:"Tempo. Strength was yesterday so monitor leg freshness — if heavy, dial pace down per coach."},
-    {dow:"Sat",date:"02 May",pill:"bike",modality:"Bike",name:"blocchi LT1",detail:"1:05 · 46 TSS",done:false,kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Quality bike. Sets up Sunday long run."},
-    {dow:"Sun",date:"03 May",pill:"run",modality:"Run",name:"lungo variato",detail:"1:16 · 108 TSS",done:false,kcal:2950,carb:"High",p:145,c:430,f:80,note:"Biggest day of the week. Coffee + banana pre, SIS during. Eat properly after — pasta with parmigiano + olive oil + protein at lunch is the classic recovery meal."}
+    {dow:"Mon",date:"27 Apr",pill:"run",modality:"Run",name:"100/Z2/100",detail:"54:25 · 10.3 km · 63 TSS",defaultStatus:"done",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Recovery focus today. Eat well, hydrate.",
+      meals:[
+        {label:"Breakfast",tag:"post-run",kcal:600,desc:"80g oats cooked in 250ml almond milk + banana + 30g mixed nuts + 1 tbsp honey"},
+        {label:"Snack",kcal:200,desc:"Arla Protein pouch + 150g blueberries"},
+        {label:"Lunch",tag:"pack-friendly",kcal:750,desc:"150g grilled chicken + 200g cooked rice + broccoli + carrots + 1 tbsp olive oil + lemon"},
+        {label:"Snack",kcal:250,desc:"Fage 0% 200g + 30g oats + raspberries"},
+        {label:"Dinner",kcal:900,desc:"Bolognese: 150g beef mince + Mutti tomato + onion, on 100g dry rigatoni + 30g parmigiano + romaine salad with olive oil"}
+      ]},
+    {dow:"Tue",date:"28 Apr",pill:"bike",modality:"Bike",name:"z2 + 30/30",detail:"1:01:19 · 11.1 km · 38 TSS",defaultStatus:"done",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Bike day — lower-impact than running. Today done.",
+      meals:[
+        {label:"Breakfast",kcal:550,desc:"3-egg omelette with 30g feta + spinach, 2 slices wholegrain toast, ½ avocado"},
+        {label:"Snack",kcal:150,desc:"Banana + 20g almonds"},
+        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"Tuna bowl: 1 can tuna in spring water + 200g boiled potatoes + 2 boiled eggs + romaine + capers + olive oil + lemon"},
+        {label:"Snack",kcal:250,desc:"Arla Protein pouch + apple"},
+        {label:"Dinner",kcal:950,desc:"Pan-seared sea bass (200g) + 250g roasted potatoes + asparagus + olive oil + lemon"}
+      ]},
+    {dow:"Wed",date:"29 Apr",pill:"run",modality:"Run",name:"fartlek 100/100",detail:"~42 min · 53 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium-high",p:140,c:320,f:75,note:"Quality run. Coffee + SIS pre-run if early.",
+      meals:[
+        {label:"Pre-run",kcal:0,desc:"Coffee + banana + SIS gel (intensity day)"},
+        {label:"Breakfast",tag:"post-run",kcal:550,desc:"80g oats + almond milk + banana + 20g nuts"},
+        {label:"Snack",kcal:200,desc:"Arla Protein pouch + raspberries"},
+        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"150g chicken breast + 200g cooked rice + roasted broccoli + lemon-olive oil dressing"},
+        {label:"Snack",kcal:200,desc:"Fage 0% 200g + 1 tbsp honey"},
+        {label:"Dinner",kcal:950,desc:"Spinach & ricotta tortelloni 300g + parmigiano + Mutti tomato sauce + side: 100g grilled chicken + romaine salad"}
+      ]},
+    {dow:"Thu",date:"30 Apr",pill:"strength",modality:"Strength",name:"Strength session",detail:"Built from physio program · ~45-50 min",defaultStatus:"planned",kcal:2300,carb:"Lower",p:140,c:240,f:80,note:"Today's session is detailed in the Workout tab. Lowest-cal day of the week — don't overshoot.",
+      meals:[
+        {label:"Breakfast",kcal:450,desc:"Fage 0% 200g + 50g oats + berries + 1 tbsp honey + 20g nuts"},
+        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"Lentil + feta salad: 200g cooked Biona lentils + 80g feta + romaine + cherry tomato + olive oil + lemon, 1 boiled egg"},
+        {label:"Snack",tag:"post-strength",kcal:250,desc:"Arla Protein pouch + 1 piece fruit"},
+        {label:"Dinner",kcal:900,desc:"Grilled chicken 200g + roasted broccoli + 200g potatoes + olive oil + lemon"}
+      ]},
+    {dow:"Fri",date:"01 May",pill:"run",modality:"Run",name:"10' tempo",detail:"~38 min · 49 TSS",defaultStatus:"planned",kcal:2500,carb:"Medium-high",p:140,c:300,f:75,note:"Tempo. Strength was yesterday — monitor leg freshness.",
+      meals:[
+        {label:"Pre-run",kcal:0,desc:"Coffee + banana (+ SIS gel if effort feels hard)"},
+        {label:"Breakfast",tag:"post-run",kcal:550,desc:"60g oats + almond milk + banana + Greek yogurt 100g + 1 tbsp honey"},
+        {label:"Snack",kcal:200,desc:"Arla Protein pouch + apple"},
+        {label:"Lunch",tag:"pack-friendly",kcal:650,desc:"Hake fillet 150g pan-grilled + 200g cooked rice + romaine + capers + olive oil + lemon"},
+        {label:"Snack",kcal:200,desc:"Fage 0% 150g + raspberries"},
+        {label:"Dinner",kcal:900,desc:"Bolognese on 100g rigatoni + parmigiano + romaine salad"}
+      ]},
+    {dow:"Sat",date:"02 May",pill:"bike",modality:"Bike",name:"blocchi LT1",detail:"1:05 · 46 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Quality bike. Sets up Sunday long run.",
+      meals:[
+        {label:"Breakfast",kcal:550,desc:"3 eggs scrambled + 1 slice toast + ½ avocado + spinach"},
+        {label:"Snack",kcal:200,desc:"Banana + 25g almonds"},
+        {label:"Lunch",tag:"pack-friendly",kcal:700,desc:"150g grilled chicken + 200g potatoes + roasted asparagus + olive oil + lemon"},
+        {label:"Snack",kcal:200,desc:"Arla Protein pouch + blueberries"},
+        {label:"Dinner",kcal:950,desc:"Salmon 200g + 250g cooked rice + broccoli + olive oil + lemon"}
+      ]},
+    {dow:"Sun",date:"03 May",pill:"run",modality:"Run",name:"lungo variato",detail:"1:16 · 108 TSS",defaultStatus:"planned",kcal:2950,carb:"High",p:145,c:430,f:80,note:"Biggest day. Carb-up. Eat properly post-run within 60 min.",
+      meals:[
+        {label:"Pre-run",kcal:0,desc:"Coffee + banana, SIS gel during"},
+        {label:"Post-run",tag:"within 30 min",kcal:200,desc:"Arla Protein pouch + banana"},
+        {label:"Breakfast",kcal:700,desc:"80g oats + almond milk + banana + 30g nuts + honey + Greek yogurt 100g + berries"},
+        {label:"Lunch",kcal:1000,desc:"120g dry rigatoni + Mutti tomato sauce + 30g parmigiano + romaine salad with olive oil"},
+        {label:"Snack",kcal:250,desc:"Fage 0% 200g + 50g oats + honey"},
+        {label:"Dinner",kcal:800,desc:"Salmon 200g + 300g roasted potatoes + asparagus + olive oil + lemon"}
+      ]}
   ],
   strength:{
     when:"Thursday 30 April",
@@ -254,72 +346,138 @@ const PLAN = {
   }
 };
 
-// ----- RENDER -----
+// ====== STATE (localStorage) ======
+const STORAGE_KEY = "rome2027-progress-" + PLAN.weekId;
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e){ return {}; }
+}
+function saveState(s){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }catch(e){} }
+function getStatus(idx){
+  const s = loadState();
+  if(s[idx]) return s[idx];
+  return PLAN.days[idx].defaultStatus || "planned";
+}
+function setStatus(idx, status){
+  const s = loadState();
+  if(status === PLAN.days[idx].defaultStatus){ delete s[idx]; }
+  else { s[idx] = status; }
+  saveState(s);
+  rerender();
+}
+
+// ====== HELPERS ======
 function $(s,el){return (el||document).querySelector(s)}
 function $$(s,el){return (el||document).querySelectorAll(s)}
+function todayIndex(){
+  const dows=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const t = dows[new Date().getDay()];
+  let idx = PLAN.days.findIndex(d=>d.dow===t);
+  return idx<0 ? 0 : idx;
+}
 
+// ====== RENDER ======
 function init(){
+  renderCountdown();
+  rerender();
+  bindTabs();
+  $("#last-update").textContent = "Plan: " + PLAN.weekId + " · pushed " + PLAN.generated;
+}
+
+function rerender(){
   renderToday();
   renderWorkout();
   renderFuel();
   renderStatus();
-  renderCountdown();
-  bindTabs();
-  $("#last-update").textContent="Plan: "+PLAN.weekId+" · generated "+PLAN.generated;
-}
-
-function todayIndex(){
-  const today=new Date();
-  const dows=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  const t=dows[today.getDay()];
-  let idx=PLAN.days.findIndex(d=>d.dow===t);
-  if(idx<0)idx=0;
-  return idx;
 }
 
 function renderCountdown(){
-  const race=new Date(PLAN.raceDate);
-  const now=new Date();
-  const days=Math.floor((race-now)/(1000*60*60*24));
-  const weeks=Math.floor(days/7);
-  $("#countdown").textContent=weeks+" weeks · "+days+" days to race";
+  const race = new Date(PLAN.raceDate);
+  const days = Math.floor((race - new Date()) / (1000*60*60*24));
+  const weeks = Math.floor(days/7);
+  $("#countdown").textContent = weeks + " weeks · " + days + " days to race";
 }
 
 function renderToday(){
-  const i=todayIndex();
-  const d=PLAN.days[i];
-  $("#today-day").textContent=d.dow;
-  $("#today-date").textContent=d.date+" · "+d.modality.toLowerCase()+" day";
-  const p=$("#coach-pill");p.className="pill "+d.pill;p.textContent=d.modality;
-  const tag=$("#coach-tag");
-  if(d.done){tag.className="tag done";tag.textContent="DONE"}else{tag.className="tag";tag.textContent="planned"}
-  $("#coach-name").textContent=d.name;
-  $("#coach-detail").textContent=d.detail;
-  $("#kcal-today").innerHTML=d.kcal+'<span class="unit">kcal</span>';
-  $("#carb-load").textContent=d.carb;
-  $("#m-protein").innerHTML=d.p+'<span class="unit">g</span>';
-  $("#m-carbs").innerHTML=d.c+'<span class="unit">g</span>';
-  $("#m-fat").innerHTML=d.f+'<span class="unit">g</span>';
-  $("#today-note").innerHTML=d.note;
-  if(d.pill==="strength"){
-    const b=$("#today-banner");
-    b.style.display="block";
-    b.innerHTML='<strong>Strength day.</strong> Tap <strong>Workout</strong> below for the full session.';
+  const i = todayIndex();
+  const d = PLAN.days[i];
+  const status = getStatus(i);
+  $("#today-day").textContent = d.dow;
+  $("#today-date").textContent = d.date + " · " + d.modality.toLowerCase() + " day";
+  const p = $("#coach-pill"); p.className = "pill " + d.pill; p.textContent = d.modality;
+  const tag = $("#coach-tag");
+  tag.className = "tag " + (status==="done"?"done":status==="skipped"?"skipped":"");
+  tag.textContent = status.toUpperCase();
+  $("#coach-name").textContent = d.name;
+  $("#coach-detail").textContent = d.detail;
+  $("#coach-card").className = "card accent" + (status==="done"?" done":"");
+
+  // Action buttons
+  const actions = $("#coach-actions"); actions.innerHTML = "";
+  if(status === "done"){
+    const btn = document.createElement("button");
+    btn.className = "btn"; btn.textContent = "Undo done";
+    btn.onclick = ()=>setStatus(i,"planned");
+    actions.appendChild(btn);
+  } else if(status === "skipped"){
+    const btn = document.createElement("button");
+    btn.className = "btn"; btn.textContent = "Undo skip";
+    btn.onclick = ()=>setStatus(i,"planned");
+    actions.appendChild(btn);
+  } else {
+    const done = document.createElement("button");
+    done.className = "btn primary"; done.innerHTML = "✓ Mark done";
+    done.onclick = ()=>setStatus(i,"done");
+    actions.appendChild(done);
+    const skip = document.createElement("button");
+    skip.className = "btn"; skip.textContent = "Skip";
+    skip.onclick = ()=>setStatus(i,"skipped");
+    actions.appendChild(skip);
   }
+
+  $("#kcal-today").innerHTML = d.kcal + '<span class="unit">kcal</span>';
+  $("#carb-load").textContent = d.carb;
+  $("#m-protein").innerHTML = d.p + '<span class="unit">g</span>';
+  $("#m-carbs").innerHTML = d.c + '<span class="unit">g</span>';
+  $("#m-fat").innerHTML = d.f + '<span class="unit">g</span>';
+  $("#today-note").innerHTML = d.note;
+
+  if(d.pill === "strength"){
+    const b = $("#today-banner");
+    b.style.display = "block";
+    b.innerHTML = '<strong>Strength day.</strong> Tap <strong>Workout</strong> below for the full session.';
+  } else {
+    $("#today-banner").style.display = "none";
+  }
+
+  // Today's meals
+  const mc = $("#today-meals"); mc.innerHTML = "";
+  d.meals.forEach(m => mc.appendChild(mealCard(m)));
+}
+
+function mealCard(m){
+  const el = document.createElement("div");
+  el.className = "meal";
+  el.innerHTML = `
+    <div class="meal-kcal"><div class="num">${m.kcal||"—"}</div><div class="lbl">kcal</div></div>
+    <div class="meal-body">
+      <div class="meal-name">${m.label}${m.tag?'<span class="meal-tag">'+m.tag+'</span>':''}</div>
+      <div class="meal-desc">${m.desc}</div>
+    </div>`;
+  return el;
 }
 
 function renderWorkout(){
-  const s=PLAN.strength;
-  $("#workout-when").textContent=s.when;
-  $("#workout-block").textContent=s.block;
-  $("#ex-total").textContent=s.exercises.length;
-  const sc=$("#ex-scroller");
-  const dots=$("#dots");
-  sc.innerHTML="";dots.innerHTML="";
-  s.exercises.forEach((e,i)=>{
-    const card=document.createElement("div");
-    card.className="exercise";
-    card.innerHTML=`
+  const s = PLAN.strength;
+  $("#workout-when").textContent = s.when;
+  $("#workout-block").textContent = s.block;
+  $("#ex-total").textContent = s.exercises.length;
+  const sc = $("#ex-scroller"); sc.innerHTML = "";
+  const dots = $("#dots"); dots.innerHTML = "";
+  s.exercises.forEach((e,i) => {
+    const card = document.createElement("div");
+    card.className = "exercise";
+    card.innerHTML = `
       <div class="step">${i+1} / ${s.exercises.length}</div>
       <div class="ex-name">${e.name}</div>
       <div class="ex-tag">${e.tag}</div>
@@ -329,72 +487,121 @@ function renderWorkout(){
       </div>
       <div class="cue">${e.cue}</div>`;
     sc.appendChild(card);
-    const dot=document.createElement("div");
-    dot.className="dot"+(i===0?" active":"");
+    const dot = document.createElement("div");
+    dot.className = "dot" + (i===0?" active":"");
     dots.appendChild(dot);
   });
-  sc.addEventListener("scroll",()=>{
-    const w=sc.clientWidth;
-    const idx=Math.round(sc.scrollLeft/w);
-    $$(".dot",dots).forEach((d,j)=>d.classList.toggle("active",j===idx));
-    $("#ex-current").textContent=idx+1;
-  },{passive:true});
+  sc.addEventListener("scroll", ()=>{
+    const w = sc.clientWidth;
+    const idx = Math.round(sc.scrollLeft / w);
+    $$(".dot", dots).forEach((d,j)=>d.classList.toggle("active", j===idx));
+    $("#ex-current").textContent = idx+1;
+  }, {passive:true});
+
+  // Strength action buttons (find Thu day index)
+  const thuIdx = PLAN.days.findIndex(d=>d.pill==="strength");
+  const status = getStatus(thuIdx);
+  const actions = $("#strength-actions"); actions.innerHTML = "";
+  if(status === "done"){
+    const btn = document.createElement("button");
+    btn.className = "btn success"; btn.innerHTML = "✓ Done — undo";
+    btn.onclick = ()=>setStatus(thuIdx,"planned");
+    actions.appendChild(btn);
+  } else if(status === "skipped"){
+    const btn = document.createElement("button");
+    btn.className = "btn"; btn.textContent = "Skipped — undo";
+    btn.onclick = ()=>setStatus(thuIdx,"planned");
+    actions.appendChild(btn);
+  } else {
+    const done = document.createElement("button");
+    done.className = "btn primary"; done.innerHTML = "✓ Mark session done";
+    done.onclick = ()=>setStatus(thuIdx,"done");
+    actions.appendChild(done);
+    const skip = document.createElement("button");
+    skip.className = "btn"; skip.textContent = "Skip this week";
+    skip.onclick = ()=>setStatus(thuIdx,"skipped");
+    actions.appendChild(skip);
+  }
 }
 
 function renderFuel(){
-  const wrap=$("#fuel-week");wrap.innerHTML="";
-  PLAN.days.forEach(d=>{
-    const card=document.createElement("div");
-    card.className="card";
-    card.innerHTML=`
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div><span class="pill ${d.pill}">${d.modality}</span> <strong style="margin-left:6px">${d.dow} ${d.date}</strong></div>
-        <div style="font-size:20px;font-weight:800">${d.kcal}<span style="font-size:11px;color:var(--muted);font-weight:600;margin-left:3px">kcal</span></div>
+  const wrap = $("#fuel-week"); wrap.innerHTML = "";
+  PLAN.days.forEach((d,i) => {
+    const status = getStatus(i);
+    const acc = document.createElement("div");
+    acc.className = "day-acc" + (status==="done"?" done":status==="skipped"?" skipped":"") + (i===todayIndex()?" open":"");
+    acc.innerHTML = `
+      <div class="day-head">
+        <div class="day-head-left">
+          <div class="day-head-top">
+            <span class="pill ${d.pill}">${d.modality}</span>
+            <span class="day-head-name">${d.dow} ${d.date}</span>
+          </div>
+          <div class="day-head-meta">${d.name} · ${d.detail}</div>
+        </div>
+        <div class="day-head-right">
+          <div class="day-head-kcal">${d.kcal}<span class="unit">kcal</span></div>
+          <div class="day-head-carb">${d.carb}</div>
+        </div>
+        <span class="chev">▶</span>
       </div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:10px">${d.name} · ${d.detail}</div>
-      <div style="display:flex;gap:14px;font-size:12px">
-        <span><span class="muted">P</span> <strong>${d.p}g</strong></span>
-        <span><span class="muted">C</span> <strong>${d.c}g</strong></span>
-        <span><span class="muted">F</span> <strong>${d.f}g</strong></span>
-        <span style="margin-left:auto" class="muted">${d.carb}</span>
+      <div class="day-body">
+        <div class="macro-line">
+          <span><span class="muted">P</span> <strong>${d.p}g</strong></span>
+          <span><span class="muted">C</span> <strong>${d.c}g</strong></span>
+          <span><span class="muted">F</span> <strong>${d.f}g</strong></span>
+        </div>
+        <div class="meals"></div>
       </div>`;
-    wrap.appendChild(card);
+    const head = acc.querySelector(".day-head");
+    head.addEventListener("click", ()=>acc.classList.toggle("open"));
+    const meals = acc.querySelector(".meals");
+    d.meals.forEach(m => meals.appendChild(mealCard(m)));
+    wrap.appendChild(acc);
   });
 }
 
 function renderStatus(){
-  const grid=$("#weekgrid");grid.innerHTML="";
-  const ti=todayIndex();
-  PLAN.days.forEach((d,i)=>{
-    const cell=document.createElement("div");
-    cell.className="daycell"+(d.pill==="rest"?" rest":"")+(i===ti?" today":"")+(d.pill!=="rest"?" has-workout":"");
-    cell.innerHTML=`<div>${d.dow}</div><div class="num">${d.date.split(" ")[0]}</div>`;
+  const grid = $("#weekgrid"); grid.innerHTML = "";
+  const ti = todayIndex();
+  PLAN.days.forEach((d,i) => {
+    const status = getStatus(i);
+    const cell = document.createElement("div");
+    let cls = "daycell";
+    if(d.pill === "rest") cls += " rest";
+    if(i === ti) cls += " today";
+    if(d.pill !== "rest") cls += " has-workout";
+    if(status === "done") cls += " done";
+    if(status === "skipped") cls += " skipped";
+    cell.className = cls;
+    cell.innerHTML = `<div>${d.dow}</div><div class="num">${d.date.split(" ")[0]}</div>`;
+    cell.addEventListener("click", ()=>{ document.querySelector('[data-view="today"]').click(); });
     grid.appendChild(cell);
   });
-  const m=PLAN.metrics;
-  $("#m-ctl").textContent=m.ctl;
-  $("#m-atl").textContent=m.atl;
-  $("#m-tsb").textContent=(m.tsb>0?"+":"")+m.tsb;
-  $("#m-ramp").textContent=(m.ramp28>0?"+":"")+m.ramp28;
-  $("#m-rhr").textContent=m.rhr+" bpm";
-  $("#m-hrv").textContent=m.hrv;
-  const b=PLAN.body;
-  $("#b-weight").textContent=b.weight;
-  $("#b-bf").textContent=b.bf;
-  $("#b-ffm").textContent=b.ffm;
-  $("#b-visc").textContent=b.visc;
+  const m = PLAN.metrics;
+  $("#m-ctl").textContent = m.ctl;
+  $("#m-atl").textContent = m.atl;
+  $("#m-tsb").textContent = (m.tsb>0?"+":"") + m.tsb;
+  $("#m-ramp").textContent = (m.ramp28>0?"+":"") + m.ramp28;
+  $("#m-rhr").textContent = m.rhr + " bpm";
+  $("#m-hrv").textContent = m.hrv;
+  const b = PLAN.body;
+  $("#b-weight").textContent = b.weight;
+  $("#b-bf").textContent = b.bf;
+  $("#b-ffm").textContent = b.ffm;
+  $("#b-visc").textContent = b.visc;
 }
 
 function bindTabs(){
-  $$(".tab").forEach(t=>t.addEventListener("click",()=>{
-    const view=t.dataset.view;
-    $$(".tab").forEach(b=>b.classList.toggle("active",b===t));
-    $$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));
-    window.scrollTo({top:0,behavior:"instant"});
+  $$(".tab").forEach(t => t.addEventListener("click", ()=>{
+    const view = t.dataset.view;
+    $$(".tab").forEach(b => b.classList.toggle("active", b===t));
+    $$(".view").forEach(v => v.classList.toggle("active", v.id==="view-"+view));
+    window.scrollTo({top:0, behavior:"instant"});
   }));
 }
 
-document.addEventListener("DOMContentLoaded",init);
+document.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
