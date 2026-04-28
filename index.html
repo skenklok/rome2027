@@ -76,13 +76,16 @@ h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .macro .unit{font-size:11px;color:var(--muted);font-weight:600}
 .deck-meta{font-size:13px;color:var(--muted);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
 .deck-meta .progress{font-weight:700;color:var(--text)}
-.deck{position:relative;height:430px;margin:0 -4px}
+.deck{position:relative;height:540px;margin:0 -4px}
 .scroller{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 4px;gap:12px;height:100%;-webkit-overflow-scrolling:touch}
 .scroller::-webkit-scrollbar{display:none}
 .exercise{flex:0 0 calc(100% - 8px);scroll-snap-align:center;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;display:flex;flex-direction:column}
 .exercise .step{font-size:11px;letter-spacing:2px;color:var(--accent);font-weight:700;text-transform:uppercase}
 .exercise .ex-name{font-size:28px;font-weight:800;margin:8px 0 6px;letter-spacing:-.5px;line-height:1.1}
 .exercise .ex-tag{font-size:13px;color:var(--muted);margin-bottom:18px;font-weight:500}
+.exercise .ex-images{display:flex;gap:8px;margin-bottom:14px}
+.exercise .ex-img{flex:1;background:#fafafa;border-radius:10px;padding:6px;height:100px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.exercise .ex-img img{max-width:100%;max-height:100%;object-fit:contain}
 .exercise .ex-prescription{display:flex;gap:14px;margin-bottom:16px}
 .prescription-cell{flex:1;background:var(--surface-2);border-radius:12px;padding:12px;text-align:center}
 .prescription-cell .pn{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
@@ -443,16 +446,16 @@ const PLAN = {
     when:"Thursday 30 April",
     block:"~45–50 min · physio-derived",
     exercises:[
-      {name:"Glute medius release",tag:"Warm-up · physio #15",sets:"2",reps:"60s",sets_label:"sides",reps_label:"hold",cue:"Lacrosse or hard ball under front/side of hip over the gluteus medius / TFL. Roll up and down using hand and foot to control. Light pressure first; hunt the trigger spots."},
-      {name:"Hip flexor stretch",tag:"Warm-up · physio #11",sets:"2",reps:"30s",sets_label:"sides",reps_label:"hold",cue:"Half-kneel with chair for support, pillow under knee. Tilt pelvis backward, squeeze glute, transfer weight forward — feel the front of the rear hip. Don't extend the lower back."},
-      {name:"Marching",tag:"Activation · physio #8",sets:"2",reps:"10",sets_label:"sets",reps_label:"per leg",cue:"Lying on floor, knees bent, heels touching, toes up. Tighten abs, keep back flat. Raise one leg in marching motion. Slow and controlled — this is activation, not a workout. Hips should not roll."},
-      {name:"Bulgarian split squat",tag:"Strength · physio #2",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",cue:"90% of weight on heel of front leg. Bring back knee toward floor without lower-back extension. Torso upright. Bodyweight for the first session — add dumbbells when 10 reps feels easy."},
-      {name:"Step-up to knee drive",tag:"Strength · physio #1",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",cue:"One foot on step. Step up, drive opposite knee high (don't tap step). Hold a beat at top. Lower with control. Add dumbbells once form is solid."},
-      {name:"Leg abduction",tag:"Strength · physio #4",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"reps",cue:"Machine if gym is open — controlled tempo, no jerking. At home: side-lying clamshell with mini-band, same rep range. Both hit the gluteus medius for hip stability."},
-      {name:"Single-leg glute bridge",tag:"Core · physio #9",sets:"3",reps:"to fatigue",sets_label:"sets",reps_label:"per leg",cue:"Lying, both knees bent. Lift one leg, drive through heel of grounded foot. Hold top 1–2 sec, lower with control. As many good-form reps as possible until comfortably tired = 1 set."},
-      {name:"Side plank",tag:"Core · physio #5",sets:"3",reps:"10–15s",sets_label:"sets",reps_label:"each side",cue:"Elbow under shoulder. Torso, hips, feet in one straight line. Hold steady — don't let hips sag. Stop if it hurts."},
-      {name:"Abdominal plank",tag:"Core · physio #6",sets:"3",reps:"20–30s",sets_label:"sets",reps_label:"hold",cue:"Forearms and toes, chin tucked, body in a straight line. Engage abs/core. No arching the lower back. If form breaks, end the set."},
-      {name:"Quad + hamstring + glute stretch",tag:"Cool-down · physio #12-14",sets:"3",reps:"20s",sets_label:"each",reps_label:"per side",cue:"Standing quad stretch (heel to glute) → seated hamstring (one leg out, hinge forward) → seated figure-4 glute. 20 seconds × 3 each. Even if you skip everything else, do these."}
+      {name:"Glute medius release",tag:"Warm-up · physio #15",sets:"2",reps:"60s",sets_label:"sides",reps_label:"hold",images:["exercises/glute-release-1.jpg","exercises/glute-release-2.jpg"],cue:"Lacrosse or hard ball under front/side of hip over the gluteus medius / TFL. Roll up and down using hand and foot to control. Light pressure first; hunt the trigger spots."},
+      {name:"Hip flexor stretch",tag:"Warm-up · physio #11",sets:"2",reps:"30s",sets_label:"sides",reps_label:"hold",images:["exercises/hip-flexor-1.jpg","exercises/hip-flexor-2.jpg"],cue:"Half-kneel with chair for support, pillow under knee. Tilt pelvis backward, squeeze glute, transfer weight forward — feel the front of the rear hip. Don't extend the lower back."},
+      {name:"Marching",tag:"Activation · physio #8",sets:"2",reps:"10",sets_label:"sets",reps_label:"per leg",images:["exercises/marching-1.jpg","exercises/marching-2.jpg"],cue:"Lying on floor, knees bent, heels touching, toes up. Tighten abs, keep back flat. Raise one leg in marching motion. Slow and controlled — this is activation, not a workout. Hips should not roll."},
+      {name:"Bulgarian split squat",tag:"Strength · physio #2",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",images:["exercises/bulgarian-1.jpg","exercises/bulgarian-2.jpg"],cue:"90% of weight on heel of front leg. Bring back knee toward floor without lower-back extension. Torso upright. Bodyweight for the first session — add dumbbells when 10 reps feels easy."},
+      {name:"Step-up to knee drive",tag:"Strength · physio #1",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",images:["exercises/step-up-1.jpg","exercises/step-up-2.jpg"],cue:"One foot on step. Step up, drive opposite knee high (don't tap step). Hold a beat at top. Lower with control. Add dumbbells once form is solid."},
+      {name:"Leg abduction",tag:"Strength · physio #4",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"reps",images:["exercises/leg-abduction-1.jpg","exercises/leg-abduction-2.jpg"],cue:"Machine if gym is open — controlled tempo, no jerking. At home: side-lying clamshell with mini-band, same rep range. Both hit the gluteus medius for hip stability."},
+      {name:"Single-leg glute bridge",tag:"Core · physio #9",sets:"3",reps:"to fatigue",sets_label:"sets",reps_label:"per leg",images:["exercises/glute-bridge-1.jpg","exercises/glute-bridge-2.jpg"],cue:"Lying, both knees bent. Lift one leg, drive through heel of grounded foot. Hold top 1–2 sec, lower with control. As many good-form reps as possible until comfortably tired = 1 set."},
+      {name:"Side plank",tag:"Core · physio #5",sets:"3",reps:"10–15s",sets_label:"sets",reps_label:"each side",images:["exercises/side-plank-1.jpg","exercises/side-plank-2.jpg"],cue:"Elbow under shoulder. Torso, hips, feet in one straight line. Hold steady — don't let hips sag. Stop if it hurts."},
+      {name:"Abdominal plank",tag:"Core · physio #6",sets:"3",reps:"20–30s",sets_label:"sets",reps_label:"hold",images:["exercises/ab-plank-1.jpg","exercises/ab-plank-2.jpg"],cue:"Forearms and toes, chin tucked, body in a straight line. Engage abs/core. No arching the lower back. If form breaks, end the set."},
+      {name:"Quad + hamstring + glute stretch",tag:"Cool-down · physio #12-14",sets:"3",reps:"20s",sets_label:"each",reps_label:"per side",images:["exercises/quad-stretch-1.jpg","exercises/hamstring-stretch-1.jpg","exercises/glute-stretch-1.jpg"],cue:"Standing quad stretch (heel to glute) → seated hamstring (one leg out, hinge forward) → seated figure-4 glute. 20 seconds × 3 each. Even if you skip everything else, do these."}
     ]
   }
 };
@@ -595,10 +598,12 @@ function renderWorkout(){
   s.exercises.forEach((e,i) => {
     const card = document.createElement("div");
     card.className = "exercise";
+    const imgsHtml = (e.images||[]).map(src => `<div class="ex-img"><img src="${src}" alt="" loading="lazy"></div>`).join("");
     card.innerHTML = `
       <div class="step">${i+1} / ${s.exercises.length}</div>
       <div class="ex-name">${e.name}</div>
       <div class="ex-tag">${e.tag}</div>
+      ${imgsHtml ? `<div class="ex-images">${imgsHtml}</div>` : ''}
       <div class="ex-prescription">
         <div class="prescription-cell"><div class="pn">${e.sets_label}</div><div class="pv">${e.sets}</div></div>
         <div class="prescription-cell"><div class="pn">${e.reps_label}</div><div class="pv">${e.reps}</div></div>
