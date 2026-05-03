@@ -312,14 +312,14 @@ const SNACK_HIGH = [
 ];
 // ====== DATA ======
 const PLAN = {
-  weekId:"2026-W18",
-  weekRange:"27 Apr → 3 May 2026",
+  weekId:"2026-W19",
+  weekRange:"4 May → 10 May 2026",
   raceDate:"2027-03-14",
-  generated:"2026-04-28",
-  metrics:{ctl:34,atl:33,tsb:2,ramp28:1,rhr:47,hrv:53},
+  generated:"2026-05-03",
+  metrics:{ctl:37,atl:50,tsb:-4,ramp28:6,rhr:47,hrv:53},
   body:{weight:"79.55 kg",bf:"22.5%",ffm:"61.65 kg",visc:"6 (excellent)"},
   days:[
-    {dow:"Mon",date:"27 Apr",pill:"run",modality:"Run",name:"100/Z2/100",detail:"54:25 · 10.3 km · 63 TSS",defaultStatus:"done",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Recovery focus today. Eat well, hydrate.",
+    {dow:"Mon",date:"04 May",pill:"run",modality:"Run",name:"10 @ Z2",detail:"~52 min · 10 km · 69 TSS",defaultStatus:"planned",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Easy 10 km @ Z2. Coach note: 'Consideriamo Almeno 1 Allenamento In Palestra Alla Settimana' — gym day formally on Fri.",
       meals:[
         {slot:"Breakfast (post-run)",options:BREAKFAST_MED},
         {slot:"Snack",options:SNACK_MED},
@@ -335,7 +335,7 @@ const PLAN = {
           {name:"Chicken pasta + feta",kcal:900,desc:"100g dry rigatoni + 200g chicken breast + 60g feta + asparagus + lemon + olive oil"}
         ]}
       ]},
-    {dow:"Tue",date:"28 Apr",pill:"bike",modality:"Bike",name:"z2 + 30/30",detail:"1:01:19 · 11.1 km · 38 TSS",defaultStatus:"done",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Bike day — lower-impact than running. Today done.",
+    {dow:"Tue",date:"05 May",pill:"bike",modality:"Bike",name:"z2 + 30/30",detail:"~1:03 · 43 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Bike day — lower-impact than running. Cross-training to keep aerobic load up.",
       meals:[
         {slot:"Breakfast",options:BREAKFAST_MED},
         {slot:"Snack",options:SNACK_LOW},
@@ -351,7 +351,7 @@ const PLAN = {
           {name:"Hake pasta",kcal:920,desc:"100g dry rigatoni + 200g hake (flaked) + lemon + capers + olive oil + asparagus on side"}
         ]}
       ]},
-    {dow:"Wed",date:"29 Apr",pill:"run",modality:"Run",name:"fartlek 100/100",detail:"~42 min · 53 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium-high",p:140,c:320,f:75,note:"Quality run. Coffee + SIS pre-run if early.",
+    {dow:"Wed",date:"06 May",pill:"run",modality:"Run",name:"fartlek 45/15",detail:"~43 min · 57 TSS",defaultStatus:"planned",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Quality run with shorter intervals (45s on / 15s easy). Coffee + SIS pre-run.",
       meals:[
         {slot:"Pre-run",options:[
           {name:"Coffee + banana + SIS",tag:"recommended",kcal:120,desc:"Standing routine: coffee + banana + 1 SIS gel during the harder reps"}
@@ -370,7 +370,23 @@ const PLAN = {
           {name:"Pasta Bolognese",kcal:920,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + 30g parmigiano + romaine"}
         ]}
       ]},
-    {dow:"Thu",date:"30 Apr",pill:"strength",modality:"Strength",name:"Strength session",detail:"Built from physio program · ~45-50 min",defaultStatus:"planned",kcal:2300,carb:"Lower",p:140,c:240,f:80,note:"Today's session is in the Workout tab. Lowest-cal day — don't overshoot.",
+    {dow:"Thu",date:"07 May",pill:"bike",modality:"Bike",name:"blocchi lt1",detail:"~1:05 · 46 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Quality bike — LT1 blocks. Sets up the gym day Friday.",
+      meals:[
+        {slot:"Breakfast",options:BREAKFAST_MED},
+        {slot:"Snack",options:SNACK_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Tuna rice bowl",tag:"recommended",kcal:700,desc:"1 can tuna + 200g cooked rice + romaine + capers + olive oil + lemon + 1 boiled egg"},
+          {name:"Pasta with hake",kcal:700,desc:"80g dry rigatoni + 150g hake (flaked) + Mutti tomato + capers + romaine on the side"},
+          {name:"Chicken rice bowl",kcal:700,desc:"150g chicken breast + 200g cooked rice + roasted broccoli + olive oil + lemon"}
+        ]},
+        {slot:"Snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Sea bass + rice",tag:"recommended",kcal:920,desc:"200g pan-seared sea bass + 250g cooked rice + asparagus + olive oil + lemon + romaine salad"},
+          {name:"Tortelloni",kcal:920,desc:"300g spinach & ricotta tortelloni + Mutti tomato + 30g parmigiano + side: 100g grilled chicken + romaine"},
+          {name:"Hake pasta",kcal:920,desc:"100g dry rigatoni + 200g hake (flaked) + lemon + capers + olive oil + asparagus on side"}
+        ]}
+      ]},
+    {dow:"Fri",date:"08 May",pill:"strength",modality:"Strength",name:"palestra",detail:"Coach-prescribed gym session · ~50 min",defaultStatus:"planned",kcal:2400,carb:"Lower",p:145,c:260,f:80,note:"Coach formally added a gym day. Session is in the Workout tab — first one using your actual building-gym kit. Lower-cal day; protein bumped slightly for the muscle work.",
       meals:[
         {slot:"Breakfast",options:BREAKFAST_LOW},
         {slot:"Lunch (pack-friendly)",options:[
@@ -385,7 +401,7 @@ const PLAN = {
           {name:"Pasta with chicken & feta",kcal:880,desc:"80g dry rigatoni + 150g chicken + 60g feta + asparagus + lemon + olive oil"}
         ]}
       ]},
-    {dow:"Fri",date:"01 May",pill:"run",modality:"Run",name:"10' tempo",detail:"~38 min · 49 TSS",defaultStatus:"planned",kcal:2500,carb:"Medium-high",p:140,c:300,f:75,note:"Tempo. Strength was yesterday — monitor leg freshness.",
+    {dow:"Sat",date:"09 May",pill:"run",modality:"Run",name:"12' tempo",detail:"~40 min · 52 TSS",defaultStatus:"planned",kcal:2650,carb:"Medium-high",p:140,c:310,f:80,note:"12-min tempo. Strength was yesterday — monitor leg freshness; if heavy, dial pace down per coach.",
       meals:[
         {slot:"Pre-run",options:[
           {name:"Coffee + banana",tag:"recommended",kcal:90,desc:"Coffee + banana. Add SIS gel if effort feels hard."}
@@ -399,28 +415,12 @@ const PLAN = {
         ]},
         {slot:"Snack",options:SNACK_MED},
         {slot:"Dinner",options:[
-          {name:"Pasta Bolognese",tag:"recommended",kcal:880,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + onion + 30g parmigiano + romaine salad"},
-          {name:"Salmon + rice",kcal:880,desc:"180g salmon + 250g cooked rice + broccoli + olive oil + lemon"},
-          {name:"Tortelloni",kcal:880,desc:"300g spinach & ricotta tortelloni + parmigiano + Mutti tomato + side romaine"}
+          {name:"Pasta Bolognese",tag:"recommended",kcal:920,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + onion + 30g parmigiano + romaine salad"},
+          {name:"Salmon + rice",kcal:920,desc:"200g salmon + 250g cooked rice + broccoli + olive oil + lemon"},
+          {name:"Tortelloni",kcal:920,desc:"300g spinach & ricotta tortelloni + parmigiano + Mutti tomato + side romaine"}
         ]}
       ]},
-    {dow:"Sat",date:"02 May",pill:"bike",modality:"Bike",name:"blocchi LT1",detail:"1:05 · 46 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Quality bike. Sets up Sunday long run.",
-      meals:[
-        {slot:"Breakfast",options:BREAKFAST_MED},
-        {slot:"Snack",options:SNACK_LOW},
-        {slot:"Lunch (pack-friendly)",options:[
-          {name:"Chicken rice bowl",tag:"recommended",kcal:700,desc:"150g grilled chicken + 200g cooked rice + roasted asparagus + olive oil + lemon"},
-          {name:"Mince pasta",kcal:700,desc:"80g dry rigatoni + 150g beef mince + Mutti tomato + onion + parmigiano + romaine"},
-          {name:"Sea bass rice bowl",kcal:700,desc:"200g sea bass + 200g cooked rice + romaine + capers + olive oil + lemon"}
-        ]},
-        {slot:"Snack",options:SNACK_MED},
-        {slot:"Dinner",options:[
-          {name:"Salmon + rice",tag:"recommended",kcal:920,desc:"200g salmon + 250g cooked rice + broccoli + olive oil + lemon + romaine"},
-          {name:"Cod pasta",kcal:920,desc:"100g dry rigatoni + 200g cod (flaked) + Mutti cherry tomatoes + capers + olive oil + asparagus"},
-          {name:"Chicken pasta",kcal:920,desc:"100g dry rigatoni + 200g chicken + 60g feta + asparagus + lemon + olive oil"}
-        ]}
-      ]},
-    {dow:"Sun",date:"03 May",pill:"run",modality:"Run",name:"lungo variato",detail:"1:16 · 108 TSS",defaultStatus:"planned",kcal:2950,carb:"High",p:145,c:430,f:80,note:"Biggest day. Carb-up. Eat properly post-run within 60 min.",
+    {dow:"Sun",date:"10 May",pill:"run",modality:"Run",name:"18 km long",detail:"~1:30 · 130 TSS",defaultStatus:"planned",kcal:3050,carb:"High",p:145,c:460,f:85,note:"Longest long run yet (~1h30 at ~5:00/km). Carb-up. At ~90 min, consider adding banana + honey before fasted coffee+banana, given fracture history.",
       meals:[
         {slot:"Pre-run",options:[
           {name:"Coffee + banana + SIS",tag:"recommended",kcal:140,desc:"Coffee + banana before, SIS gel during run"}
@@ -443,18 +443,20 @@ const PLAN = {
       ]}
   ],
   strength:{
-    when:"Thursday 30 April",
-    block:"~45–50 min · physio-derived",
+    when:"Friday 8 May · palestra (coach-prescribed)",
+    block:"~50 min · using your building gym kit",
     exercises:[
+      {name:"Concept2 rower warm-up",tag:"Warm-up · easy Z1",sets:"5",reps:"min",sets_label:"min",reps_label:"steady",cue:"5 minutes easy on the rower at conversational effort (~20–22 SPM, drag factor wherever the machine sits). Whole-body activation, opens the hips and engages the back without loading the legs hard. If the rower's busy, the elliptical works the same way."},
       {name:"Glute medius release",tag:"Warm-up · physio #15",sets:"2",reps:"60s",sets_label:"sides",reps_label:"hold",images:["exercises/glute-release-1.jpg","exercises/glute-release-2.jpg"],cue:"Lacrosse or hard ball under front/side of hip over the gluteus medius / TFL. Roll up and down using hand and foot to control. Light pressure first; hunt the trigger spots."},
       {name:"Hip flexor stretch",tag:"Warm-up · physio #11",sets:"2",reps:"30s",sets_label:"sides",reps_label:"hold",images:["exercises/hip-flexor-1.jpg","exercises/hip-flexor-2.jpg"],cue:"Half-kneel with chair for support, pillow under knee. Tilt pelvis backward, squeeze glute, transfer weight forward — feel the front of the rear hip. Don't extend the lower back."},
-      {name:"Marching",tag:"Activation · physio #8",sets:"2",reps:"10",sets_label:"sets",reps_label:"per leg",images:["exercises/marching-1.jpg","exercises/marching-2.jpg"],cue:"Lying on floor, knees bent, heels touching, toes up. Tighten abs, keep back flat. Raise one leg in marching motion. Slow and controlled — this is activation, not a workout. Hips should not roll."},
-      {name:"Bulgarian split squat",tag:"Strength · physio #2",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",images:["exercises/bulgarian-1.jpg","exercises/bulgarian-2.jpg"],cue:"90% of weight on heel of front leg. Bring back knee toward floor without lower-back extension. Torso upright. Bodyweight for the first session — add dumbbells when 10 reps feels easy."},
-      {name:"Step-up to knee drive",tag:"Strength · physio #1",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",images:["exercises/step-up-1.jpg","exercises/step-up-2.jpg"],cue:"One foot on step. Step up, drive opposite knee high (don't tap step). Hold a beat at top. Lower with control. Add dumbbells once form is solid."},
-      {name:"Leg abduction",tag:"Strength · physio #4",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"reps",images:["exercises/leg-abduction-1.jpg","exercises/leg-abduction-2.jpg"],cue:"Machine if gym is open — controlled tempo, no jerking. At home: side-lying clamshell with mini-band, same rep range. Both hit the gluteus medius for hip stability."},
-      {name:"Single-leg glute bridge",tag:"Core · physio #9",sets:"3",reps:"to fatigue",sets_label:"sets",reps_label:"per leg",images:["exercises/glute-bridge-1.jpg","exercises/glute-bridge-2.jpg"],cue:"Lying, both knees bent. Lift one leg, drive through heel of grounded foot. Hold top 1–2 sec, lower with control. As many good-form reps as possible until comfortably tired = 1 set."},
-      {name:"Side plank",tag:"Core · physio #5",sets:"3",reps:"10–15s",sets_label:"sets",reps_label:"each side",images:["exercises/side-plank-1.jpg","exercises/side-plank-2.jpg"],cue:"Elbow under shoulder. Torso, hips, feet in one straight line. Hold steady — don't let hips sag. Stop if it hurts."},
-      {name:"Abdominal plank",tag:"Core · physio #6",sets:"3",reps:"20–30s",sets_label:"sets",reps_label:"hold",images:["exercises/ab-plank-1.jpg","exercises/ab-plank-2.jpg"],cue:"Forearms and toes, chin tucked, body in a straight line. Engage abs/core. No arching the lower back. If form breaks, end the set."},
+      {name:"Bulgarian split squat",tag:"Strength · physio #2",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",images:["exercises/bulgarian-1.jpg","exercises/bulgarian-2.jpg"],cue:"Spinlock dumbbells suitcase grip — start ~5–7 kg each side, rear foot elevated on the step. 90% of weight on heel of front leg. Bring back knee toward floor without lower-back extension. Torso upright. Add weight when 10 reps feels easy."},
+      {name:"Step-up to knee drive",tag:"Strength · physio #1",sets:"3",reps:"8–10",sets_label:"sets",reps_label:"per leg",images:["exercises/step-up-1.jpg","exercises/step-up-2.jpg"],cue:"Use the fixed 10 kg dumbbells (suitcase grip). Foot on step, drive opposite knee high (don't tap step). Hold a beat at top. Lower with control. Plates can come off the spinlocks if 10 kg feels light."},
+      {name:"Leg extension (Technogym)",tag:"Strength · physio #3",sets:"3",reps:"10",sets_label:"sets",reps_label:"reps",images:["exercises/leg-extension-1.jpg","exercises/leg-extension-2.jpg"],cue:"Technogym machine — 4 fingers' width clearance behind the knees. Slow tempo: 3 seconds up, 3 seconds down, as Scott prescribed. Pick a load that gets you to genuine effort by rep 8. Must be pain-free — stop if not."},
+      {name:"Leg curl (Technogym)",tag:"Strength · NEW",sets:"2",reps:"10",sets_label:"sets",reps_label:"reps",cue:"Technogym leg curl. Posterior chain — hamstrings + glutes. Controlled tempo, no swinging. Replaces the single-leg hamstring bridge now that you have machine access. Pad below the calves, not the achilles."},
+      {name:"Lateral slider lunge",tag:"Strength · slider sub for leg abduction",sets:"2",reps:"8",sets_label:"sets",reps_label:"each side",cue:"Place one foot on a slider, push it laterally as you sit into a side-lunge on the standing leg. Drive back up through the heel. Targets glute medius — same target as the leg-abduction machine in the physio program. Slower than it looks; control the eccentric."},
+      {name:"Seated row (Technogym)",tag:"Upper · runner balance",sets:"2",reps:"10",sets_label:"sets",reps_label:"reps",cue:"Technogym low pull. Pull handles to lower ribs, squeeze shoulder blades, control back to start. Light load — runners need balance not bulk. Helps arm carriage in long runs."},
+      {name:"Single-leg glute bridge",tag:"Core · physio #9",sets:"2",reps:"to fatigue",sets_label:"sets",reps_label:"per leg",images:["exercises/glute-bridge-1.jpg","exercises/glute-bridge-2.jpg"],cue:"Lying, both knees bent. Lift one leg, drive through heel of grounded foot. Hold top 1–2 sec, lower with control. As many good-form reps as possible until comfortably tired = 1 set."},
+      {name:"Side plank",tag:"Core · physio #5",sets:"2",reps:"10–15s",sets_label:"sets",reps_label:"each side",images:["exercises/side-plank-1.jpg","exercises/side-plank-2.jpg"],cue:"Elbow under shoulder. Torso, hips, feet in one straight line. Hold steady — don't let hips sag. Stop if it hurts."},
       {name:"Quad + hamstring + glute stretch",tag:"Cool-down · physio #12-14",sets:"3",reps:"20s",sets_label:"each",reps_label:"per side",images:["exercises/quad-stretch-1.jpg","exercises/hamstring-stretch-1.jpg","exercises/glute-stretch-1.jpg"],cue:"Standing quad stretch (heel to glute) → seated hamstring (one leg out, hinge forward) → seated figure-4 glute. 20 seconds × 3 each. Even if you skip everything else, do these."}
     ]
   }
