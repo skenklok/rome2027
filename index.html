@@ -312,15 +312,34 @@ const SNACK_HIGH = [
 ];
 // ====== DATA ======
 const PLAN = {
-  weekId:"2026-W19",
-  weekRange:"4 May → 10 May 2026",
+  weekId:"2026-W20",
+  weekRange:"11 May → 17 May 2026",
   raceDate:"2027-03-14",
-  generated:"2026-05-03",
-  metrics:{ctl:37,atl:50,tsb:-4,ramp28:6,rhr:47,hrv:53},
+  generated:"2026-05-13",
+  metrics:{ctl:39,atl:50,tsb:-4,ramp28:5,rhr:47,hrv:53},
   body:{weight:"79.55 kg",bf:"22.5%",ffm:"61.65 kg",visc:"6 (excellent)"},
   days:[
-    {dow:"Mon",date:"04 May",pill:"run",modality:"Run",name:"10 @ Z2",detail:"~52 min · 10 km · 69 TSS",defaultStatus:"planned",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Easy 10 km @ Z2. Coach note: 'Consideriamo Almeno 1 Allenamento In Palestra Alla Settimana' — gym day formally on Fri.",
+    {dow:"Mon",date:"11 May",pill:"rest",modality:"Rest",name:"Rest day",detail:"Coach note: home 3am after flight delays · sleep 4.28h",defaultStatus:"done",kcal:2300,carb:"Lower",p:140,c:240,f:80,note:"Mandatory rest after travel disruption — sleep 4.28h. Recovery from poor sleep matters more than the missed training. Eat normally, hydrate, take it easy.",
       meals:[
+        {slot:"Breakfast",options:BREAKFAST_LOW},
+        {slot:"Snack",options:SNACK_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Lentil + feta salad",tag:"recommended",kcal:680,desc:"200g cooked Biona lentils + 80g feta + romaine + Mutti cherry tomatoes + olive oil + lemon + 1 boiled egg"},
+          {name:"Chicken rice bowl (small)",kcal:680,desc:"150g chicken breast + 150g cooked rice + steamed broccoli + olive oil + lemon"},
+          {name:"Tuna pasta salad",kcal:680,desc:"80g dry rigatoni + 1 can tuna + capers + romaine + olive oil + lemon"}
+        ]},
+        {slot:"Snack",options:SNACK_LOW},
+        {slot:"Dinner",options:[
+          {name:"Chicken + rice",tag:"recommended",kcal:880,desc:"200g grilled chicken + 200g cooked rice + roasted broccoli + olive oil + lemon"},
+          {name:"Hake + rice",kcal:880,desc:"200g pan-grilled hake + 200g cooked rice + asparagus + olive oil + lemon + romaine"},
+          {name:"Pasta with chicken & feta",kcal:880,desc:"80g dry rigatoni + 150g chicken + 60g feta + asparagus + lemon + olive oil"}
+        ]}
+      ]},
+    {dow:"Tue",date:"12 May",pill:"run",modality:"Run",name:"8 @ Z1/Z2",detail:"~49 min · 8.17 km · 49 TSS",defaultStatus:"done",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Easy 8 km done. Sleep 9.05h — recovered well from Mon's travel day.",
+      meals:[
+        {slot:"Pre-run",options:[
+          {name:"Coffee + banana",tag:"recommended",kcal:90,desc:"Coffee + banana, fasted easy run"}
+        ]},
         {slot:"Breakfast (post-run)",options:BREAKFAST_MED},
         {slot:"Snack",options:SNACK_MED},
         {slot:"Lunch (pack-friendly)",options:[
@@ -335,7 +354,7 @@ const PLAN = {
           {name:"Chicken pasta + feta",kcal:900,desc:"100g dry rigatoni + 200g chicken breast + 60g feta + asparagus + lemon + olive oil"}
         ]}
       ]},
-    {dow:"Tue",date:"05 May",pill:"bike",modality:"Bike",name:"z2 + 30/30",detail:"~1:03 · 43 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Bike day — lower-impact than running. Cross-training to keep aerobic load up.",
+    {dow:"Wed",date:"13 May",pill:"bike",modality:"Bike",name:"z2 + 20/40",detail:"~40 min · 8.51 km · 24 TSS",defaultStatus:"done",kcal:2400,carb:"Medium",p:140,c:280,f:75,note:"Bike done — shorter than the 42 TSS planned. Still rebuilding from travel fatigue. Don't push it if energy is still low — coach is reading the room.",
       meals:[
         {slot:"Breakfast",options:BREAKFAST_MED},
         {slot:"Snack",options:SNACK_LOW},
@@ -351,10 +370,25 @@ const PLAN = {
           {name:"Hake pasta",kcal:920,desc:"100g dry rigatoni + 200g hake (flaked) + lemon + capers + olive oil + asparagus on side"}
         ]}
       ]},
-    {dow:"Wed",date:"06 May",pill:"run",modality:"Run",name:"fartlek 45/15",detail:"~43 min · 57 TSS",defaultStatus:"planned",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Quality run with shorter intervals (45s on / 15s easy). Coffee + SIS pre-run.",
+    {dow:"Thu",date:"14 May",pill:"strength",modality:"Strength",name:"gym? (optional)",detail:"Coach proposed — optional this week given travel fatigue",defaultStatus:"planned",kcal:2400,carb:"Lower",p:145,c:260,f:80,note:"Coach put 'gym?' with a question mark — optional given the travel jet-lag. Decision: if you slept well last night + legs feel OK, do the session in the Workout tab. If still drained, skip it and rest — recovery wins this week.",
+      meals:[
+        {slot:"Breakfast",options:BREAKFAST_LOW},
+        {slot:"Lunch (pack-friendly)",options:[
+          {name:"Lentil + feta salad",tag:"recommended",kcal:680,desc:"200g cooked Biona lentils + 80g feta + romaine + Mutti cherry tomatoes + olive oil + lemon + 1 boiled egg"},
+          {name:"Chicken rice bowl (small)",kcal:680,desc:"150g chicken breast + 150g cooked rice + steamed broccoli + olive oil + lemon"},
+          {name:"Tuna pasta salad",kcal:680,desc:"80g dry rigatoni + 1 can tuna + capers + romaine + olive oil + lemon"}
+        ]},
+        {slot:"Post-strength snack",options:SNACK_MED},
+        {slot:"Dinner",options:[
+          {name:"Chicken + rice",tag:"recommended",kcal:880,desc:"200g grilled chicken + 200g cooked rice + roasted broccoli + olive oil + lemon"},
+          {name:"Hake + rice",kcal:880,desc:"200g pan-grilled hake + 200g cooked rice + asparagus + olive oil + lemon + romaine"},
+          {name:"Pasta with chicken & feta",kcal:880,desc:"80g dry rigatoni + 150g chicken + 60g feta + asparagus + lemon + olive oil"}
+        ]}
+      ]},
+    {dow:"Fri",date:"15 May",pill:"run",modality:"Run",name:"fartlek 45/15",detail:"~46 min · 63 TSS",defaultStatus:"planned",kcal:2700,carb:"Medium-high",p:140,c:340,f:80,note:"Quality run, 45s on / 15s easy fartlek. Coffee + SIS pre-run if effort feels hard.",
       meals:[
         {slot:"Pre-run",options:[
-          {name:"Coffee + banana + SIS",tag:"recommended",kcal:120,desc:"Standing routine: coffee + banana + 1 SIS gel during the harder reps"}
+          {name:"Coffee + banana + SIS",tag:"recommended",kcal:120,desc:"Coffee + banana + 1 SIS gel during the harder reps"}
         ]},
         {slot:"Breakfast (post-run)",options:BREAKFAST_MED},
         {slot:"Snack",options:SNACK_LOW},
@@ -370,57 +404,23 @@ const PLAN = {
           {name:"Pasta Bolognese",kcal:920,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + 30g parmigiano + romaine"}
         ]}
       ]},
-    {dow:"Thu",date:"07 May",pill:"bike",modality:"Bike",name:"blocchi lt1",detail:"~1:05 · 46 TSS",defaultStatus:"planned",kcal:2600,carb:"Medium",p:140,c:300,f:80,note:"Quality bike — LT1 blocks. Sets up the gym day Friday.",
+    {dow:"Sat",date:"16 May",pill:"bike",modality:"Bike",name:"Z2 to LT1",detail:"~1:16 · 59 TSS",defaultStatus:"planned",kcal:2700,carb:"Medium",p:140,c:310,f:80,note:"Longer Z2 ride with LT1 efforts. Sets up Sunday's variable-intensity long run.",
       meals:[
         {slot:"Breakfast",options:BREAKFAST_MED},
         {slot:"Snack",options:SNACK_LOW},
         {slot:"Lunch (pack-friendly)",options:[
-          {name:"Tuna rice bowl",tag:"recommended",kcal:700,desc:"1 can tuna + 200g cooked rice + romaine + capers + olive oil + lemon + 1 boiled egg"},
-          {name:"Pasta with hake",kcal:700,desc:"80g dry rigatoni + 150g hake (flaked) + Mutti tomato + capers + romaine on the side"},
-          {name:"Chicken rice bowl",kcal:700,desc:"150g chicken breast + 200g cooked rice + roasted broccoli + olive oil + lemon"}
+          {name:"Chicken rice bowl",tag:"recommended",kcal:700,desc:"150g grilled chicken + 200g cooked rice + roasted asparagus + olive oil + lemon"},
+          {name:"Mince pasta",kcal:700,desc:"80g dry rigatoni + 150g beef mince + Mutti tomato + onion + parmigiano + romaine"},
+          {name:"Sea bass rice bowl",kcal:700,desc:"200g sea bass + 200g cooked rice + romaine + capers + olive oil + lemon"}
         ]},
         {slot:"Snack",options:SNACK_MED},
         {slot:"Dinner",options:[
-          {name:"Sea bass + rice",tag:"recommended",kcal:920,desc:"200g pan-seared sea bass + 250g cooked rice + asparagus + olive oil + lemon + romaine salad"},
-          {name:"Tortelloni",kcal:920,desc:"300g spinach & ricotta tortelloni + Mutti tomato + 30g parmigiano + side: 100g grilled chicken + romaine"},
-          {name:"Hake pasta",kcal:920,desc:"100g dry rigatoni + 200g hake (flaked) + lemon + capers + olive oil + asparagus on side"}
+          {name:"Salmon + rice",tag:"recommended",kcal:920,desc:"200g salmon + 250g cooked rice + broccoli + olive oil + lemon + romaine"},
+          {name:"Cod pasta",kcal:920,desc:"100g dry rigatoni + 200g cod (flaked) + Mutti cherry tomatoes + capers + olive oil + asparagus"},
+          {name:"Chicken pasta",kcal:920,desc:"100g dry rigatoni + 200g chicken + 60g feta + asparagus + lemon + olive oil"}
         ]}
       ]},
-    {dow:"Fri",date:"08 May",pill:"strength",modality:"Strength",name:"palestra",detail:"Coach-prescribed gym session · ~50 min",defaultStatus:"planned",kcal:2400,carb:"Lower",p:145,c:260,f:80,note:"Coach formally added a gym day. Session is in the Workout tab — first one using your actual building-gym kit. Lower-cal day; protein bumped slightly for the muscle work.",
-      meals:[
-        {slot:"Breakfast",options:BREAKFAST_LOW},
-        {slot:"Lunch (pack-friendly)",options:[
-          {name:"Lentil + feta salad",tag:"recommended",kcal:680,desc:"200g cooked Biona lentils + 80g feta + romaine + Mutti cherry tomatoes + olive oil + lemon + 1 boiled egg"},
-          {name:"Chicken rice bowl (small)",kcal:680,desc:"150g chicken breast + 150g cooked rice + steamed broccoli + olive oil + lemon"},
-          {name:"Tuna pasta salad",kcal:680,desc:"80g dry rigatoni + 1 can tuna + capers + romaine + olive oil + lemon"}
-        ]},
-        {slot:"Post-strength snack",options:SNACK_MED},
-        {slot:"Dinner",options:[
-          {name:"Chicken + rice",tag:"recommended",kcal:880,desc:"200g grilled chicken + 200g cooked rice + roasted broccoli + olive oil + lemon"},
-          {name:"Hake + rice",kcal:880,desc:"200g pan-grilled hake + 200g cooked rice + asparagus + olive oil + lemon + romaine"},
-          {name:"Pasta with chicken & feta",kcal:880,desc:"80g dry rigatoni + 150g chicken + 60g feta + asparagus + lemon + olive oil"}
-        ]}
-      ]},
-    {dow:"Sat",date:"09 May",pill:"run",modality:"Run",name:"12' tempo",detail:"~40 min · 52 TSS",defaultStatus:"planned",kcal:2650,carb:"Medium-high",p:140,c:310,f:80,note:"12-min tempo. Strength was yesterday — monitor leg freshness; if heavy, dial pace down per coach.",
-      meals:[
-        {slot:"Pre-run",options:[
-          {name:"Coffee + banana",tag:"recommended",kcal:90,desc:"Coffee + banana. Add SIS gel if effort feels hard."}
-        ]},
-        {slot:"Breakfast (post-run)",options:BREAKFAST_MED},
-        {slot:"Snack",options:SNACK_LOW},
-        {slot:"Lunch (pack-friendly)",options:[
-          {name:"Hake rice bowl",tag:"recommended",kcal:680,desc:"150g pan-grilled hake + 200g cooked rice + romaine + capers + olive oil + lemon"},
-          {name:"Chicken pasta",kcal:680,desc:"80g dry rigatoni + 150g chicken + Mutti tomato + 20g parmigiano + romaine"},
-          {name:"Tuna rice bowl",kcal:680,desc:"1 can tuna + 200g cooked rice + romaine + capers + olive oil + lemon + 1 boiled egg"}
-        ]},
-        {slot:"Snack",options:SNACK_MED},
-        {slot:"Dinner",options:[
-          {name:"Pasta Bolognese",tag:"recommended",kcal:920,desc:"100g dry rigatoni + 150g beef mince + Mutti tomato + onion + 30g parmigiano + romaine salad"},
-          {name:"Salmon + rice",kcal:920,desc:"200g salmon + 250g cooked rice + broccoli + olive oil + lemon"},
-          {name:"Tortelloni",kcal:920,desc:"300g spinach & ricotta tortelloni + parmigiano + Mutti tomato + side romaine"}
-        ]}
-      ]},
-    {dow:"Sun",date:"10 May",pill:"run",modality:"Run",name:"18 km long",detail:"~1:30 · 130 TSS",defaultStatus:"planned",kcal:3050,carb:"High",p:145,c:460,f:85,note:"Longest long run yet (~1h30 at ~5:00/km). Carb-up. At ~90 min, consider adding banana + honey before fasted coffee+banana, given fracture history.",
+    {dow:"Sun",date:"17 May",pill:"run",modality:"Run",name:"Fartlek a intensità variabili",detail:"~1:17 · 105 TSS",defaultStatus:"planned",kcal:2900,carb:"High",p:145,c:430,f:80,note:"Variable-intensity long fartlek — coach's twist on the long run. Coffee + banana pre, SIS during. At 1h+, you'll want mid-run fuel.",
       meals:[
         {slot:"Pre-run",options:[
           {name:"Coffee + banana + SIS",tag:"recommended",kcal:140,desc:"Coffee + banana before, SIS gel during run"}
@@ -443,7 +443,7 @@ const PLAN = {
       ]}
   ],
   strength:{
-    when:"Friday 8 May · palestra (coach-prescribed)",
+    when:"Thursday 14 May · gym? (coach proposed, optional this week)",
     block:"~50 min · using your building gym kit",
     exercises:[
       {name:"Concept2 rower warm-up",tag:"Warm-up · easy Z1",sets:"5",reps:"min",sets_label:"min",reps_label:"steady",cue:"5 minutes easy on the rower at conversational effort (~20–22 SPM, drag factor wherever the machine sits). Whole-body activation, opens the hips and engages the back without loading the legs hard. If the rower's busy, the elliptical works the same way."},
